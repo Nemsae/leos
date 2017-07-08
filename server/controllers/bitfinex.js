@@ -15,15 +15,27 @@ exports.compute = (request, response) => {
   //  1. Grab user inputs from request
   const { myEther } = request.body;
   const actualTotalEth = 19948.92;
+  let targetBenchmark = 0;
+  let actualPayout = 0;
 
   //  2. use api to grab current price of EOS
   axios.get(tickerUrl)
-    .then((res) => {
-      return +res.data.last_price;
-    })
+    .then(res => +res.data.last_price)
     .then((currExchangeRate) => {
       const benchmark = calculateBenchmark(currExchangeRate, myEther);
-      res.send(`Your benchmark is `)
+      targetBenchmark = benchmark;
+      // response.send(`Your benchmark is ${benchmark}.`);
+      return currExchangeRate;
+    })
+    .then((currExchangeRate) => {
+      actualPayout = calculatePayout(currExchangeRate, actualTotalEth, myEther);
+      return currExchangeRate;
+    })
+    .then((currExchangeRate) => {
+      response.send(`Exchange rate of ${symbol} is currently ${currExchangeRate}.
+        \nYour target benchmark of total ETH contributed is ${targetBenchmark}.
+        \nYour actual payout in this window, given ${myEther} ETH, would have been ${actualPayout} ETH.
+        \nPotential profit in this window would be ${actualPayout - myEther} ETH.`);
     })
     .catch((err) => {
       console.log('err: ', err);
@@ -43,18 +55,20 @@ exports.compute = (request, response) => {
   // });
 };
 
-function calculateBenchmark(exchangeRate, myEther) {
+function calculateBenchmark(exchangeRate, ether) {
+  const txFee = 0.01;
+  const myEther = ether - txFee;
   const myTokens = myEther / exchangeRate;
-  console.log('myTokens:benchmark ', myTokens);
   const ethBenchmark = (2000000 * myEther) / myTokens;
-
+  // console.log('ethBenchmark: ', ethBenchmark, 'myTokens: ', myTokens,  'myEther: ', myEther,  'exchangeRate: ', exchangeRate);  // eslint-disable-line no-console
   return ethBenchmark;
 }
 
 function calculatePayout(exchangeRate, totalEth, myEther) {
-  const txFee = .01;
-  const myTokens = (2000000 * myEther - txFee) / totalEth;
-  console.log('myTokens: ', myTokens, 'exchangeRate: ', exchangeRate);
+  const txFee = 0.01;
+  const myTotalEther = myEther - txFee;
+  const myTokens = (2000000 * myTotalEther) / (totalEth + myTotalEther);
+  // console.log('myTokens: ', myTokens, 'exchangeRate: ', exchangeRate);
   const payout = myTokens * exchangeRate;
 
   return payout;
