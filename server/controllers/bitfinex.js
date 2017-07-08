@@ -39,7 +39,8 @@ exports.compute = (request, response) => {
         \nYour target benchmark of total ETH contributed is ${targetBenchmark}.
         \nYour actual payout in EOS would have been ${eosPayout} EOS.
         \nYour actual payout in ETH would have been ${ethPayout} ETH.
-        \nPotential profit in this window would be ${ethPayout - myEther} ETH.`);
+        \nPotential profit in this window would be ${ethPayout - myEther} ETH.
+        \nProfit ${((ethPayout - myEther) / myEther) * 100} %.`);
     })
     .catch((err) => {
       console.log('err: ', err);
