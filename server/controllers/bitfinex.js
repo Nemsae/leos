@@ -1,6 +1,19 @@
-//  Sending a simple message
+//  Caclulating payout
+//  1. Grab user inputs
+//  2. Get current ticker for EOS
+//  3. Compute using helper functions
+//  4. response.send(profit)
+
 exports.compute = (request, response) => {
-  const { myEther, actualTotalEth } = request.body;
+  //  GET: grab ticker info for the symbol
+  const tickerUrl = `https://api.bitfinex.com/v1/pubticker/${symbol}`;
+  //  GET: grab symbols
+  const symbolsUrl = 'https://api.bitfinex.com/v1/symbols';
+  const { myEther, actualTotalEth } = request.body; //  User will give their amount of ether
+
+
+  //  use api to grab current price of EOS
+
   // client.messages.create({
   //   body: messageReq.body,
   //   to: messageReq.receiver,  // Text this number ex. "+16506782956"
@@ -50,9 +63,3 @@ console.log('actualPayout_07_07_17: ', actualPayout_07_07_17);
 
 const ethProfit_07_07_17 = actualPayout_07_07_17 - myEther_07_07_17;
 console.log('ethProfit_07_07_17: ', ethProfit_07_07_17);
-
-//  GET: grab ticker info for the symbol
-const tickerUrl = `https://api.bitfinex.com/v1/pubticker/${symbol}`;
-
-//  GET: grab symbols
-const symbolsUrl = 'https://api.bitfinex.com/v1/symbols';
