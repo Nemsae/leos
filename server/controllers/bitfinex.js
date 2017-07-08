@@ -16,7 +16,8 @@ exports.compute = (request, response) => {
   const { myEther } = request.body;
   const actualTotalEth = 19948.92;
   let targetBenchmark = 0;
-  let actualPayout = 0;
+  let ethPayout = 0;
+  let eosPayout = 0;
 
   //  2. use api to grab current price of EOS
   axios.get(tickerUrl)
@@ -28,33 +29,22 @@ exports.compute = (request, response) => {
       return currExchangeRate;
     })
     .then((currExchangeRate) => {
-      actualPayout = calculatePayout(currExchangeRate, actualTotalEth, myEther);
+      eosPayout = calculateEOSPayout(actualTotalEth, myEther);
+      ethPayout = calculateETHPayout(currExchangeRate, eosPayout);
       return currExchangeRate;
     })
     .then((currExchangeRate) => {
       response.send(`Exchange rate of ${symbol} is currently ${currExchangeRate}.
+        \nYour Contribution: ${myEther} ETH.
         \nYour target benchmark of total ETH contributed is ${targetBenchmark}.
-        \nYour actual payout in this window, given ${myEther} ETH, would have been ${actualPayout} ETH.
-        \nPotential profit in this window would be ${actualPayout - myEther} ETH.`);
+        \nYour actual payout in EOS would have been ${eosPayout} EOS.
+        \nYour actual payout in ETH would have been ${ethPayout} ETH.
+        \nPotential profit in this window would be ${ethPayout - myEther} ETH.`);
     })
     .catch((err) => {
       console.log('err: ', err);
     });
-
-  // client.messages.create({
-  //   body: messageReq.body,
-  //   to: messageReq.receiver,  // Text this number ex. "+16506782956"
-  //   from: messageReq.sender, // From a valid Twilio number ex. "+16504259920"
-  // })
-  // .then((message) => {
-  //   response.send(message.sid);
-  // })
-  // .catch((err) => {
-  //   console.log('ERROR:POST:/api/twilio ', err);  // eslint-disable-line no-console
-  //   response.status(400).send(err);
-  // });
 };
-
 function calculateBenchmark(exchangeRate, ether) {
   const txFee = 0.01;
   const myEther = ether - txFee;
@@ -64,14 +54,16 @@ function calculateBenchmark(exchangeRate, ether) {
   return ethBenchmark;
 }
 
-function calculatePayout(exchangeRate, totalEth, myEther) {
+function calculateEOSPayout(totalEth, myEther) {
   const txFee = 0.01;
   const myTotalEther = myEther - txFee;
   const myTokens = (2000000 * myTotalEther) / (totalEth + myTotalEther);
-  // console.log('myTokens: ', myTokens, 'exchangeRate: ', exchangeRate);
-  const payout = myTokens * exchangeRate;
+  return myTokens;
+}
 
-  return payout;
+function calculateETHPayout(exchangeRate, myTokens) {
+  const myPayout = myTokens * exchangeRate;
+  return myPayout;
 }
 
 /*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 */
