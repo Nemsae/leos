@@ -4,6 +4,6 @@ const bitfinex = require('../controllers/bitfinex');
 const router = express.Router();
 
 router.route('/')
-.get(bitfinex.compute);
+.post(bitfinex.compute);
 
 module.exports = router;

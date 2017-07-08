@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 //  Caclulating payout
 //  1. Grab user inputs
 //  2. Get current ticker for EOS
@@ -5,14 +7,27 @@
 //  4. response.send(profit)
 
 exports.compute = (request, response) => {
+  const symbol = 'eoseth';  //  eosusd, eosbtc
   //  GET: grab ticker info for the symbol
   const tickerUrl = `https://api.bitfinex.com/v1/pubticker/${symbol}`;
   //  GET: grab symbols
   const symbolsUrl = 'https://api.bitfinex.com/v1/symbols';
-  const { myEther, actualTotalEth } = request.body; //  User will give their amount of ether
+  //  1. Grab user inputs from request
+  const { myEther } = request.body;
+  const actualTotalEth = 19948.92;
 
-
-  //  use api to grab current price of EOS
+  //  2. use api to grab current price of EOS
+  axios.get(tickerUrl)
+    .then((res) => {
+      return +res.data.last_price;
+    })
+    .then((currExchangeRate) => {
+      const benchmark = calculateBenchmark(currExchangeRate, myEther);
+      res.send(`Your benchmark is `)
+    })
+    .catch((err) => {
+      console.log('err: ', err);
+    });
 
   // client.messages.create({
   //   body: messageReq.body,
