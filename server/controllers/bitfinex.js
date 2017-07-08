@@ -45,6 +45,7 @@ exports.compute = (request, response) => {
       console.log('err: ', err);
     });
 };
+
 function calculateBenchmark(exchangeRate, ether) {
   const txFee = 0.01;
   const myEther = ether - txFee;
@@ -65,22 +66,3 @@ function calculateETHPayout(exchangeRate, myTokens) {
   const myPayout = myTokens * exchangeRate;
   return myPayout;
 }
-
-/*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 */
-/*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 */
-/*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 *//*  Window #7 */
-const exchangeRate_07_07_17 = .010500;
-const myEther_07_07_17 = 6.74947130;  //  Mine
-// const myEther_07_07_17 = 21.31020580;
-const actualTotalEth_07_07_17 = 19948.92;
-
-//  Calculating the limit for total eth contributed
-const maxLimitEth_07_07_17 = calculateBenchmark(exchangeRate_07_07_17, myEther_07_07_17);
-console.log('maxLimitEth_07_07_17: ', maxLimitEth_07_07_17);
-
-//  Actual payout
-const actualPayout_07_07_17 = calculatePayout(exchangeRate_07_07_17, actualTotalEth_07_07_17, myEther_07_07_17);
-console.log('actualPayout_07_07_17: ', actualPayout_07_07_17);
-
-const ethProfit_07_07_17 = actualPayout_07_07_17 - myEther_07_07_17;
-console.log('ethProfit_07_07_17: ', ethProfit_07_07_17);
