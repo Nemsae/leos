@@ -13,7 +13,8 @@ exports.compute = (request, response) => {
   //  GET: grab symbols
   const symbolsUrl = 'https://api.bitfinex.com/v1/symbols';
   //  1. Grab user inputs from request
-  const { myEther, actualTotalEth } = request.body;
+  const { myEther, projectedEth } = request.body;
+  console.log('projectedEth: ', projectedEth);
   // const actualTotalEth = 19948.92;
   let targetBenchmark = 0;
   let ethPayout = 0;
@@ -29,7 +30,8 @@ exports.compute = (request, response) => {
       return currExchangeRate;
     })
     .then((currExchangeRate) => {
-      eosPayout = calculateEOSPayout(actualTotalEth, myEther);
+      eosPayout = calculateEOSPayout(+projectedEth, myEther);
+      // eosPayout = calculateEOSPayout(actualTotalEth, myEther);
       ethPayout = calculateETHPayout(currExchangeRate, eosPayout);
       return currExchangeRate;
     })
@@ -59,6 +61,10 @@ function calculateBenchmark(exchangeRate, ether) {
 function calculateEOSPayout(totalEth, myEther) {
   const txFee = 0.01;
   const myTotalEther = myEther - txFee;
+  let x = (2000000 * myTotalEther)
+  let y = (totalEth + myTotalEther)
+  console.log('x: ', x);
+  console.log('y: ', y);
   const myTokens = (2000000 * myTotalEther) / (totalEth + myTotalEther);
   return myTokens;
 }
