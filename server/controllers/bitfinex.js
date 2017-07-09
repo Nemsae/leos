@@ -13,12 +13,14 @@ exports.compute = (request, response) => {
   //  GET: grab symbols
   const symbolsUrl = 'https://api.bitfinex.com/v1/symbols';
   //  1. Grab user inputs from request
-  const { myEther, projectedEth } = request.body;
+  const { myEther, projectedEth, actualEth } = request.body;
   console.log('projectedEth: ', projectedEth);
-  // const actualTotalEth = 19948.92;
+  console.log('actualEth: ', actualEth);
   let targetBenchmark = 0;
-  let ethPayout = 0;
-  let eosPayout = 0;
+  let ethPayout = 'Not defined.';
+  let eosPayout = 'Not defined.';
+  let projectedEosPayout = 0;
+  let projectedEthPayout = 0;
 
   //  2. use api to grab current price of EOS
   axios.get(tickerUrl)
@@ -26,12 +28,12 @@ exports.compute = (request, response) => {
     .then((currExchangeRate) => {
       const benchmark = calculateBenchmark(currExchangeRate, myEther);
       targetBenchmark = benchmark;
-      // response.send(`Your benchmark is ${benchmark}.`);
       return currExchangeRate;
     })
     .then((currExchangeRate) => {
-      eosPayout = calculateEOSPayout(+projectedEth, myEther);
-      // eosPayout = calculateEOSPayout(actualTotalEth, myEther);
+      projectedEosPayout = calculateEOSPayout(+projectedEth, myEther);
+      projectedEthPayout = calculateETHPayout(currExchangeRate, projectedEosPayout);
+      eosPayout = calculateEOSPayout(+actualEth, myEther);
       ethPayout = calculateETHPayout(currExchangeRate, eosPayout);
       return currExchangeRate;
     })
@@ -39,8 +41,8 @@ exports.compute = (request, response) => {
       response.send(`Exchange rate of ${symbol} is currently ${currExchangeRate}.
         \nYour Contribution: ${myEther} ETH.
         \nYour target benchmark of total ETH contributed is ${targetBenchmark}.
-        \nYour actual payout in EOS would have been ${eosPayout} EOS.
-        \nYour actual payout in ETH would have been ${ethPayout} ETH.
+        \nYour projected payout would have been ${projectedEosPayout} EOS, or ${projectedEthPayout} ETH.
+        \nYour actual payout would have been ${eosPayout} EOS, or ${ethPayout} ETH.
         \nPotential profit in this window would be ${ethPayout - myEther} ETH.
         \nProfit ${((ethPayout - myEther) / myEther) * 100} %.`);
     })
@@ -54,17 +56,12 @@ function calculateBenchmark(exchangeRate, ether) {
   const myEther = ether - txFee;
   const myTokens = myEther / exchangeRate;
   const ethBenchmark = (2000000 * myEther) / myTokens;
-  // console.log('ethBenchmark: ', ethBenchmark, 'myTokens: ', myTokens,  'myEther: ', myEther,  'exchangeRate: ', exchangeRate);  // eslint-disable-line no-console
   return ethBenchmark;
 }
 
 function calculateEOSPayout(totalEth, myEther) {
   const txFee = 0.01;
   const myTotalEther = myEther - txFee;
-  let x = (2000000 * myTotalEther)
-  let y = (totalEth + myTotalEther)
-  console.log('x: ', x);
-  console.log('y: ', y);
   const myTokens = (2000000 * myTotalEther) / (totalEth + myTotalEther);
   return myTokens;
 }
