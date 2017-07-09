@@ -13,8 +13,8 @@ exports.compute = (request, response) => {
   //  GET: grab symbols
   const symbolsUrl = 'https://api.bitfinex.com/v1/symbols';
   //  1. Grab user inputs from request
-  const { myEther } = request.body;
-  const actualTotalEth = 19948.92;
+  const { myEther, actualTotalEth } = request.body;
+  // const actualTotalEth = 19948.92;
   let targetBenchmark = 0;
   let ethPayout = 0;
   let eosPayout = 0;
