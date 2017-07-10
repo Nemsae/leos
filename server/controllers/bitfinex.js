@@ -7,9 +7,14 @@ const axios = require('axios');
 exports.exchangeRate = (request, response) => {
   const { symbol } = request.query;
   const tickerUrl = `https://api.bitfinex.com/v1/pubticker/${symbol}`;
-
+  console.log('tickerUrl: ', tickerUrl);
   axios.get(tickerUrl)
-    .then(res => res.send(+res.data.last_price));
+    .then((res) => {
+      response.send(+res.data.last_price);
+    })
+    .catch((err) => {
+      console.log('err: ', err);
+    });
 };
 
 exports.compute = (request, response) => {
@@ -58,7 +63,8 @@ exports.compute = (request, response) => {
 };
 
 function calculateBenchmark(exchangeRate, ether) {
-  const txFee = 0.01;
+  const txFee = 0.00;
+  // const txFee = 0.01;
   const myEther = ether - txFee;
   const myTokens = myEther / exchangeRate;
   const ethBenchmark = (2000000 * myEther) / myTokens;
@@ -66,7 +72,8 @@ function calculateBenchmark(exchangeRate, ether) {
 }
 
 function calculateEOSPayout(totalEth, myEther) {
-  const txFee = 0.01;
+  const txFee = 0.00;
+  // const txFee = 0.01;
   const myTotalEther = myEther - txFee;
   const myTokens = (2000000 * myTotalEther) / (totalEth + myTotalEther);
   return myTokens;
