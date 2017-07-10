@@ -1,10 +1,16 @@
 const axios = require('axios');
-
 //  Caclulating payout
 //  1. Grab user inputs
 //  2. Get current ticker for EOS
 //  3. Compute using helper functions
 //  4. response.send(profit)
+exports.exchangeRate = (request, response) => {
+  const { symbol } = request.query;
+  const tickerUrl = `https://api.bitfinex.com/v1/pubticker/${symbol}`;
+
+  axios.get(tickerUrl)
+    .then(res => res.send(+res.data.last_price));
+};
 
 exports.compute = (request, response) => {
   const symbol = 'eoseth';  //  eosusd, eosbtc
