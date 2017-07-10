@@ -24,7 +24,7 @@ function addOpposingTeamLogo() {
     const logoDiv = '.event-header__photo-container';
     console.log('logoDiv: ', logoDiv);
     // $('#theDiv').prepend('<img id="theImg" src="theImg.png" />')
-    $(logoDiv).append(`<img id="event-header__photoa" src="${opposingLogoUrl}" />`);
+    $(logoDiv).append(`<img class="event-header__photo" src="${opposingLogoUrl}" />`);
     // $('.split-content__secondary event-header__photo-container').prepend('<img id="theImg" src="theImg.png" />')
   }
 }
