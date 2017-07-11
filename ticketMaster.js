@@ -24,19 +24,42 @@ function addOpposingTeamLogo() {
     const dividerDiv = 'event-header__photo-divider';
     // const logoDiv = '.split-content__secondary event-header__photo-container';
 
-    // $('#theDiv').prepend('<img id="theImg" src="theImg.png" />')
-    $(logoDiv).append(`<div id=${dividerDiv}>VS<div/>`)
+    /* Adding the opposing team logo */
     $(logoDiv).append(`<img class="event-header__photo" id="opposingLogo" src="${opposingLogoUrl}" />`);
+    /* Adding the divider VS logo */
+    $(logoDiv).append(`<div id=${dividerDiv}>VS<div/>`)
+    /* Adding the divider */
+    // $(logoDiv).append(`<div id=${dividerDiv}>VS<div/>`)
 
+    //  COLOR for divider: #009cde
+    //  BUG; breakpoint at 740px changes positioning of divider
     //  TODO: remove zIndex
     const dividerDivStyle = {
       display: 'block',
       float: 'right',
       zIndex: '2',
       position: 'absolute',
-      right: '50%',
-      top: '40%',
+      right: '46%',
+      top: '33%',
+      background: '#009cde',  //  or darker #0075a7
+      width: '30px',
+      height: '30px',
+      borderRadius: '50%',
+      textAlign: 'center',
+      color: 'white',
+      fontSize: 'medium',
+      padding: '5px 0 0 0',
     };
+
+    const dividerLineStyle = {
+      borderLeft: '1px solid #38546d',
+      borderRight: '1px solid #16222c',
+      height: '80px',
+      position: 'absolute',
+      right: '249px',
+      top: '10px',
+    };
+
     //  CSS
     $(logoDiv).css({ display: 'flex' });
     $(`#${dividerDiv}`).css(dividerDivStyle);
