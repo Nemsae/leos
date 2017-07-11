@@ -29,18 +29,18 @@ function addOpposingTeamLogo() {
     /* Adding the divider */
     $(logoDiv).append(`<div id=${dividerDiv} />`);
     /* Adding the circle and line to the divider */
+    $(`#${dividerDiv}`).append(`<div id=${`${dividerDiv}-line`} />`);
     $(`#${dividerDiv}`).append(`<div id=${`${dividerDiv}-circle`}>VS<div/>`);
-    $(`#${dividerDiv}`).append(`<div id=${`${dividerDiv}-line`}>LINE<div/>`);
 
     //  COLOR for divider: #009cde
     //  BUG; breakpoint at 740px changes positioning of divider
     //  TODO: remove zIndex
     const dividerDivStyle = {
-      display: 'block',
-      float: 'right',
-      zIndex: '2',
+      // display: 'block',
+      // float: 'right',
+      zIndex: '1',
       position: 'absolute',
-      right: '46%',
+      right: '45%',
       top: '33%',
     };
 
@@ -53,15 +53,18 @@ function addOpposingTeamLogo() {
       color: 'white',
       fontSize: 'medium',
       padding: '5px 0 0 0',
+      zIndex: '3',
+      // position: 'absolute'
     };
 
     const dividerLineStyle = {
-      borderLeft: '1px solid #38546d',
-      borderRight: '1px solid #16222c',
-      height: '80px',
+      borderLeft: '1px solid #009cde',
+      borderRight: '1px solid #009cde',
+      height: '5.7em',
       position: 'absolute',
-      right: '249px',
-      top: '10px',
+      right: '50%',
+      top: '-40%',
+      zIndex: '2',
     };
 
     /* CSS */
