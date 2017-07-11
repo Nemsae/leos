@@ -26,10 +26,11 @@ function addOpposingTeamLogo() {
 
     /* Adding the opposing team logo */
     $(logoDiv).append(`<img class="event-header__photo" id="opposingLogo" src="${opposingLogoUrl}" />`);
-    /* Adding the divider VS logo */
-    $(logoDiv).append(`<div id=${dividerDiv}>VS<div/>`)
     /* Adding the divider */
-    // $(logoDiv).append(`<div id=${dividerDiv}>VS<div/>`)
+    $(logoDiv).append(`<div id=${dividerDiv} />`);
+    /* Adding the circle and line to the divider */
+    $(`#${dividerDiv}`).append(`<div id=${`${dividerDiv}-circle`}>VS<div/>`);
+    $(`#${dividerDiv}`).append(`<div id=${`${dividerDiv}-line`}>LINE<div/>`);
 
     //  COLOR for divider: #009cde
     //  BUG; breakpoint at 740px changes positioning of divider
@@ -41,6 +42,9 @@ function addOpposingTeamLogo() {
       position: 'absolute',
       right: '46%',
       top: '33%',
+    };
+
+    const dividerCircleStyle = {
       background: '#009cde',  //  or darker #0075a7
       width: '30px',
       height: '30px',
@@ -60,9 +64,13 @@ function addOpposingTeamLogo() {
       top: '10px',
     };
 
-    //  CSS
+    /* CSS */
+    /* CSS */
+    /* CSS */
     $(logoDiv).css({ display: 'flex' });
     $(`#${dividerDiv}`).css(dividerDivStyle);
+    $(`#${dividerDiv}-circle`).css(dividerCircleStyle);
+    $(`#${dividerDiv}-line`).css(dividerLineStyle);
     $('#opposingLogo').css({ marginLeft: '-2px' });
   }
 }
