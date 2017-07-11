@@ -21,15 +21,25 @@ function addOpposingTeamLogo() {
   function init() {
     const opposingLogoUrl = window._storeUtils.eventJSONData.artists[1].images[1].location;
     const logoDiv = '.event-header__photo-container';
+    const dividerDiv = 'event-header__photo-divider';
     // const logoDiv = '.split-content__secondary event-header__photo-container';
 
     // $('#theDiv').prepend('<img id="theImg" src="theImg.png" />')
-    $(logoDiv).append('<div id="event-header__photo-divider">VS<div/>')
+    $(logoDiv).append(`<div id=${dividerDiv}>VS<div/>`)
     $(logoDiv).append(`<img class="event-header__photo" id="opposingLogo" src="${opposingLogoUrl}" />`);
 
+    //  TODO: remove zIndex
+    const dividerDivStyle = {
+      display: 'block',
+      float: 'right',
+      zIndex: '2',
+      position: 'absolute',
+      right: '50%',
+      top: '40%',
+    };
     //  CSS
     $(logoDiv).css({ display: 'flex' });
-    $('#event-header__photo-divider').css({ margin: 'auto' });
+    $(`#${dividerDiv}`).css(dividerDivStyle);
     $('#opposingLogo').css({ marginLeft: '-2px' });
   }
 }
