@@ -38,7 +38,8 @@ exports.computeBenchmark = (request, response) => {
     .then((targetTokens) => {
       targetBenchmark = (2000000 * startEther) / targetTokens;
       console.log('targetBenchmark: ', targetBenchmark);
-      response.send(targetBenchmark);
+      response.send(`For a ${profitPercent} % profit,` +
+        ` total ETH for this window should be ${targetBenchmark}.`);
     })
     .catch((err) => {
       console.log('err: ', err);
