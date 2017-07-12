@@ -4,12 +4,12 @@ const bitfinex = require('../controllers/bitfinex');
 const router = express.Router();
 
 router.route('/exchangeRate')
-.get(bitfinex.exchangeRate);
+.get(bitfinex.currentRate);
 
 router.route('/payout')
-.post(bitfinex.compute);
+.post(bitfinex.computePayout);
 
 router.route('/benchmark')
-.get(bitfinex.computeBenchmark);
+.get(bitfinex.benchmarkForProfit);
 
 module.exports = router;
