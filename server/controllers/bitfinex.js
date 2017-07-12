@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+const Payout = require('../utils/payout');
 // const symbolsUrl = 'https://api.bitfinex.com/v1/symbols';
 
 exports.currentRate = (request, response) => {
@@ -57,15 +58,15 @@ exports.computePayout = (request, response) => {
   axios.get(tickerUrl)
     .then(res => +res.data.last_price)
     .then((currExchangeRate) => {
-      const benchmark = calculateBenchmark(currExchangeRate, myEther);
+      const benchmark = Payout.calculateBenchmark(currExchangeRate, myEther);
       targetBenchmark = benchmark;
       return currExchangeRate;
     })
     .then((currExchangeRate) => {
-      projectedEosPayout = calculateEOSPayout(+projectedEth, myEther);
-      projectedEthPayout = calculateETHPayout(currExchangeRate, projectedEosPayout);
-      eosPayout = calculateEOSPayout(+actualEth, myEther);
-      ethPayout = calculateETHPayout(currExchangeRate, eosPayout);
+      projectedEosPayout = Payout.calculateEOSPayout(+projectedEth, myEther);
+      projectedEthPayout = Payout.calculateETHPayout(currExchangeRate, projectedEosPayout);
+      eosPayout = Payout.calculateEOSPayout(+actualEth, myEther);
+      ethPayout = Payout.calculateETHPayout(currExchangeRate, eosPayout);
       return currExchangeRate;
     })
     .then((currExchangeRate) => {
@@ -82,24 +83,24 @@ exports.computePayout = (request, response) => {
     });
 };
 
-function calculateBenchmark(exchangeRate, ether) {
-  const txFee = 0.00;
-  // const txFee = 0.01;
-  const myEther = ether - txFee;
-  const myTokens = myEther / exchangeRate;
-  const ethBenchmark = (2000000 * myEther) / myTokens;
-  return ethBenchmark;
-}
-
-function calculateEOSPayout(totalEth, myEther) {
-  const txFee = 0.00;
-  // const txFee = 0.01;
-  const myTotalEther = myEther - txFee;
-  const myTokens = (2000000 * myTotalEther) / (totalEth + myTotalEther);
-  return myTokens;
-}
-
-function calculateETHPayout(exchangeRate, myTokens) {
-  const myPayout = myTokens * exchangeRate;
-  return myPayout;
-}
+// function calculateBenchmark(exchangeRate, ether) {
+//   const txFee = 0.00;
+//   // const txFee = 0.01;
+//   const myEther = ether - txFee;
+//   const myTokens = myEther / exchangeRate;
+//   const ethBenchmark = (2000000 * myEther) / myTokens;
+//   return ethBenchmark;
+// }
+//
+// function calculateEOSPayout(totalEth, myEther) {
+//   const txFee = 0.00;
+//   // const txFee = 0.01;
+//   const myTotalEther = myEther - txFee;
+//   const myTokens = (2000000 * myTotalEther) / (totalEth + myTotalEther);
+//   return myTokens;
+// }
+//
+// function calculateETHPayout(exchangeRate, myTokens) {
+//   const myPayout = myTokens * exchangeRate;
+//   return myPayout;
+// }
