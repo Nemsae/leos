@@ -9,4 +9,7 @@ router.route('/exchangeRate')
 router.route('/')
 .post(bitfinex.compute);
 
+router.route('/benchmark')
+.get(bitfinex.computeBenchmark);
+
 module.exports = router;

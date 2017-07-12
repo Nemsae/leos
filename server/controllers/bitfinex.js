@@ -3,7 +3,7 @@ const axios = require('axios');
 exports.exchangeRate = (request, response) => {
   const { symbol } = request.query;
   const tickerUrl = `https://api.bitfinex.com/v1/pubticker/${symbol}`;
-  console.log('tickerUrl: ', tickerUrl);
+
   axios.get(tickerUrl)
     .then((res) => {
       response.send(+res.data.last_price);
@@ -13,8 +13,14 @@ exports.exchangeRate = (request, response) => {
     });
 };
 
-exports.computeWithPercentage = (req, res) => {
+exports.computeBenchmark = (request, response) => {
   //  computing benchmark given a profit percentage
+  const { profitPercent, startEther } = request.query;
+  console.log('profitPercent: ', profitPercent, 'startEther: ', startEther);
+
+  const etherProfit = (profitPercent / 100) * (+startEther);
+  const targetEther = (+startEther) + etherProfit;
+  console.log('etherProfit: ', etherProfit, 'targetEther: ', targetEther);
 };
 
 exports.compute = (request, response) => {
