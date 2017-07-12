@@ -15,12 +15,34 @@ exports.exchangeRate = (request, response) => {
 
 exports.computeBenchmark = (request, response) => {
   //  computing benchmark given a profit percentage
-  const { profitPercent, startEther } = request.query;
+  const { profitPercent } = request.query;
+  let { startEther } = request.query;
+  const tickerUrl = 'https://api.bitfinex.com/v1/pubticker/eoseth';
+  startEther = +startEther;
   console.log('profitPercent: ', profitPercent, 'startEther: ', startEther);
 
-  const etherProfit = (profitPercent / 100) * (+startEther);
-  const targetEther = (+startEther) + etherProfit;
+  const etherProfit = (profitPercent / 100) * startEther;
+  const targetEther = startEther + etherProfit;
   console.log('etherProfit: ', etherProfit, 'targetEther: ', targetEther);
+
+  let targetTokens = 0;
+  let targetBenchmark = 0;
+
+  axios.get(tickerUrl)
+    .then(res => +res.data.last_price)
+    .then((currExchangeRate) => {
+      targetTokens = targetEther / currExchangeRate;
+      console.log('targetTokens: ', targetTokens);
+      return targetTokens;
+    })
+    .then((targetTokens) => {
+      targetBenchmark = (2000000 * startEther) / targetTokens;
+      console.log('targetBenchmark: ', targetBenchmark);
+      response.send(targetBenchmark);
+    })
+    .catch((err) => {
+      console.log('err: ', err);
+    });
 };
 
 exports.compute = (request, response) => {
