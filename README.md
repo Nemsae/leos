@@ -12,3 +12,5 @@
 
 ### TODO
 1. change post to a get, so we can put in myEther var into the query params
+1. change name of initial computeWithPercentage3
+1. add computeWithPercentage3
