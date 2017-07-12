@@ -13,6 +13,10 @@ exports.exchangeRate = (request, response) => {
     });
 };
 
+exports.computeWithPercentage = (req, res) => {
+  //  computing benchmark given a profit percentage
+};
+
 exports.compute = (request, response) => {
   const symbol = 'eoseth';  //  eosusd, eosbtc
   const tickerUrl = `https://api.bitfinex.com/v1/pubticker/${symbol}`;
