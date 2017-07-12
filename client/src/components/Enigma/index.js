@@ -1,3 +1,3 @@
-import Enigma from './Enigma';
+import Leos from './Leos';
 
-export default Enigma;
+export default Leos;

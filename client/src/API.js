@@ -3,7 +3,7 @@ import ServerActions from './actions/ServerActions';
 
 const API = {
   sendEncryption(encryptionPackage) {
-    axios.post('/api/enigma', encryptionPackage)
+    axios.post('/api/leos', encryptionPackage)
     .then((res) => {
       const encryptedMessage = res.data;
       ServerActions.sendEncryptedMessage(encryptedMessage);
@@ -13,7 +13,7 @@ const API = {
     });
   },
   sendDecryption(decryptionPackage) {
-    axios.get('/api/enigma', {
+    axios.get('/api/leos', {
       params: decryptionPackage,
     })
     .then((res) => {

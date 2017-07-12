@@ -1,3 +1,3 @@
-import EnigmaCard from './EnigmaCard';
+import LeosCard from './LeosCard';
 
-export default EnigmaCard;
+export default LeosCard;

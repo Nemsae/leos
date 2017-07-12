@@ -13,12 +13,12 @@ import style from './styles';
 const todaysDate = new Date(Date.now());
 const minimumDate = new Date(todaysDate.setDate(todaysDate.getDate() - 1));
 
-const EnigmaCard = (props) => {
+const LeosCard = (props) => {
   const { sender, message, date, handleChange, handleEncryptionToggle } = props;
   return (
     <div>
       <Card style={style.container}>
-        <div style={style.title}>Enigma</div>
+        <div style={style.title}>Leos</div>
         <Input
           type='text'
           label='Name'
@@ -58,7 +58,7 @@ const EnigmaCard = (props) => {
   );
 };
 
-EnigmaCard.propTypes = {
+LeosCard.propTypes = {
   sender: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   date: PropTypes.any.isRequired,
@@ -66,4 +66,4 @@ EnigmaCard.propTypes = {
   handleChange: PropTypes.func.isRequired,
 };
 
-export default EnigmaCard;
+export default LeosCard;
