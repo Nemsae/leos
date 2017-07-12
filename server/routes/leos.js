@@ -6,7 +6,7 @@ const router = express.Router();
 router.route('/exchangeRate')
 .get(bitfinex.exchangeRate);
 
-router.route('/')
+router.route('/payout')
 .post(bitfinex.compute);
 
 router.route('/benchmark')

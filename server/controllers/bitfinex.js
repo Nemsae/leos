@@ -1,12 +1,15 @@
 const axios = require('axios');
 
+const symbolsUrl = 'https://api.bitfinex.com/v1/symbols';
+
 exports.exchangeRate = (request, response) => {
   const { symbol } = request.query;
   const tickerUrl = `https://api.bitfinex.com/v1/pubticker/${symbol}`;
 
   axios.get(tickerUrl)
     .then((res) => {
-      response.send(+res.data.last_price);
+      response.send(`Current exchange rate of ${symbol} ` +
+        `is ${+res.data.last_price}`);
     })
     .catch((err) => {
       console.log('err: ', err);
@@ -19,12 +22,9 @@ exports.computeBenchmark = (request, response) => {
   let { startEther } = request.query;
   const tickerUrl = 'https://api.bitfinex.com/v1/pubticker/eoseth';
   startEther = +startEther;
-  console.log('profitPercent: ', profitPercent, 'startEther: ', startEther);
 
   const etherProfit = (profitPercent / 100) * startEther;
   const targetEther = startEther + etherProfit;
-  console.log('etherProfit: ', etherProfit, 'targetEther: ', targetEther);
-
   let targetTokens = 0;
   let targetBenchmark = 0;
 
@@ -32,12 +32,10 @@ exports.computeBenchmark = (request, response) => {
     .then(res => +res.data.last_price)
     .then((currExchangeRate) => {
       targetTokens = targetEther / currExchangeRate;
-      console.log('targetTokens: ', targetTokens);
       return targetTokens;
     })
     .then((targetTokens) => {
       targetBenchmark = (2000000 * startEther) / targetTokens;
-      console.log('targetBenchmark: ', targetBenchmark);
       response.send(`For a ${profitPercent} % profit,` +
         ` total ETH for this window should be ${targetBenchmark}.`);
     })
@@ -49,7 +47,6 @@ exports.computeBenchmark = (request, response) => {
 exports.compute = (request, response) => {
   const symbol = 'eoseth';  //  eosusd, eosbtc
   const tickerUrl = `https://api.bitfinex.com/v1/pubticker/${symbol}`;
-  const symbolsUrl = 'https://api.bitfinex.com/v1/symbols';
   const { myEther, projectedEth, actualEth } = request.body;
 
   let targetBenchmark = 0;
