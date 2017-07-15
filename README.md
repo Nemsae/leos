@@ -16,3 +16,5 @@
 1. **add computeWithPercentage3**
 1. Deploy (with an interface) to ElasticBeanstalk
 1. Save actual payouts to MongoDB/DynamoDB
+1. Add navigation to display Help/How to Use
+1. Look into exploring EOS block
