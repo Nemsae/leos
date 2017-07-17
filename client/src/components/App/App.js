@@ -25,9 +25,12 @@ const App = () => (
       <BrowserRouter>
         <div style={{ width: '100%' }}>
           <Nav />
-          <Route exact path='/' component={Home} />
-          <Route path='/help' component={Help} />
-          <Route path='/leos' component={Leos} />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/help' component={Help} />
+            <Route path='/leos' component={Leos} />
+            <Route render={() => <p>Not Found</p>} />
+          </Switch>
         </div>
       </BrowserRouter>
     </Layout>
