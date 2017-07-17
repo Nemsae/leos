@@ -13,11 +13,12 @@ export default class Trades extends React.Component {
     super();
 
     this.state = {
-      value: 1,
+      // value: 1,
+      symbol: 'EOSETH',
     };
   }
 
-  handleChange = (event, index, value) => this.setState({ value });
+  handleChange = (event, index, value) => this.setState({ symbol: value });
 
   render() {
     return (
@@ -38,13 +39,17 @@ export default class Trades extends React.Component {
             <h1>Current Rate</h1>
             <SelectField
               floatingLabelText='CURRENCY'
-              value={this.state.value}
+              value={this.state.symbol}
               onChange={this.handleChange}
             >
-              <MenuItem value={1} primaryText='EOSETH' />
+              {/* <MenuItem value={1} primaryText='EOSETH' />
               <MenuItem value={2} primaryText='EOSUSD' />
               <MenuItem value={3} primaryText='ETHUSD' />
-              <MenuItem value={4} primaryText='ETHBTC' />
+              <MenuItem value={4} primaryText='ETHBTC' /> */}
+              <MenuItem value='EOSETH' primaryText='EOSETH' />
+              <MenuItem value='EOSUSD' primaryText='EOSUSD' />
+              <MenuItem value='ETHUSD' primaryText='ETHUSD' />
+              <MenuItem value='ETHBTC' primaryText='ETHBTC' />
             </SelectField>
           </Paper>
         </div>

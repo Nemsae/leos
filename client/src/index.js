@@ -10,6 +10,8 @@ import App from './components/App';
 
 import './index.css';
 
+injectTapEventPlugin();
+
 ReactDOM.render(
   <MuiThemeProvider>
     <App />
@@ -17,4 +19,3 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
-injectTapEventPlugin();
