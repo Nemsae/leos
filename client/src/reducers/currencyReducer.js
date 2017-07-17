@@ -3,7 +3,7 @@ const initialState = {
   rate: 0,
 };
 
-export const currencyReducer = (state = initialState, action) => {
+const currencyReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'REQUEST_RATE':
       return Object.assign({}, state, {
@@ -14,3 +14,5 @@ export const currencyReducer = (state = initialState, action) => {
       return initialState;
   }
 };
+
+export default currencyReducer;

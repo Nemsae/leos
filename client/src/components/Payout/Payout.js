@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -8,22 +9,22 @@ import MenuItem from 'material-ui/MenuItem';
 
 import './styles.css';
 
-export default class Trades extends React.Component {
-  constructor() {
-    super();
+class Trades extends React.Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
-      // value: 1,
-      symbol: 'EOSETH',
+      symbol: props.currency.symbol,
+      rate: props.currency.rate,
     };
   }
 
   handleCurrencyChange = (event, index, value) => {
-    console.log('value: ', value);
     this.setState({ symbol: value });
   }
 
   render() {
+    console.log('this.props: ', this.props);
     return (
       <Paper className='trades-container'>
         <h1>Trades</h1>
@@ -50,7 +51,7 @@ export default class Trades extends React.Component {
               <MenuItem value='ETHUSD' primaryText='ETHUSD' />
               <MenuItem value='ETHBTC' primaryText='ETHBTC' />
             </SelectField>
-            <h3>.00XXXXXX</h3>
+            <h3>{this.state.rate}</h3>
             <h3>REFRESH</h3>
           </Paper>
         </div>
@@ -58,3 +59,20 @@ export default class Trades extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    currency: state.currencyRate,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    // fetchOCRText: (url) => dispatch(fetchOCRText(url)),
+  };
+}
+//
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Trades);

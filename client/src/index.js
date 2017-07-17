@@ -1,21 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import ThemeProvider from 'react-toolbox/lib/ThemeProvider';  //  TAKEOUT
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import { Provider } from 'react-redux'
 
-import theme from './assets/react-toolbox/theme.css';  //  TAKEOUT
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// import ThemeProvider from 'react-toolbox/lib/ThemeProvider';  //  TAKEOUT
+
+// import theme from './assets/react-toolbox/theme.css';  //  TAKEOUT
 import registerServiceWorker from './registerServiceWorker';
 import App from './components/App';
 
 import './index.css';
+import store from './configureStore';
 
 injectTapEventPlugin();
 
 ReactDOM.render(
-  <MuiThemeProvider>
-    <App />
-  </MuiThemeProvider>, document.getElementById('root'), // eslint-disable-line no-undef
+  <Provider store={store}>
+    <MuiThemeProvider>
+      <App />
+    </MuiThemeProvider>
+  </Provider>, document.getElementById('root'), // eslint-disable-line no-undef
 );
 
 registerServiceWorker();
