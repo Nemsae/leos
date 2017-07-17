@@ -21,8 +21,10 @@ const App = () => (
   <ThemeProvider theme={theme}>
     <Layout style={style.wrapper}>
       <BrowserRouter>
-        <Nav />
-        <Route path='/leos' component={Leos} />
+        <div>
+          <Nav />
+          <Route path='/leos' component={Leos} />
+        </div>
       </BrowserRouter>
     </Layout>
   </ThemeProvider>
