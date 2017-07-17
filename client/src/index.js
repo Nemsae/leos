@@ -7,6 +7,8 @@ import theme from './assets/react-toolbox/theme.css';
 import registerServiceWorker from './registerServiceWorker';
 import App from './components/App';
 
+import './index.css';
+
 // ReactDOM.render(
 //   <App />,
 //   document.getElementById('root') // eslint-disable-line no-undef
