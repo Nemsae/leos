@@ -3,18 +3,15 @@ import { Link } from 'react-router-dom';
 
 import './styles.css';
 
-export default class Home extends React.Component {
+export default class Help extends React.Component {
   constructor () {
     super();
   }
 
   render() {
-    return(
+    return (
       <div className='home-container'>
-        <h1>Leos EOS Computation</h1>
-        <Link className='button' to='/help'>
-          Help
-        </Link>
+        <h1>Help</h1>
       </div>
     )
   }

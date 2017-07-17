@@ -5,6 +5,8 @@ import ThemeProvider from 'react-toolbox/lib/ThemeProvider';  //  Takeout
 import Layout from 'react-toolbox/lib/layout/Layout';  //  Takeout
 
 import Nav from '../Nav';
+import Home from '../Home';
+import Help from '../Help';
 import Leos from '../Leos';
 
 import theme from '../../assets/react-toolbox/theme';  //  Takeout
@@ -23,6 +25,8 @@ const App = () => (
       <BrowserRouter>
         <div style={{ width: '100%' }}>
           <Nav />
+          <Route exact path='/' component={Home} />
+          <Route path='/help' component={Help} />
           <Route path='/leos' component={Leos} />
         </div>
       </BrowserRouter>
