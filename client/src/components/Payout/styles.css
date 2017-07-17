@@ -1,4 +1,4 @@
-.payout-container {
+.trades-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +7,24 @@
   margin: 20;
   text-align: 'center';
   display: 'inline-block';*/
+}
+
+.computation-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.benchmark-container {
+  width: 25%;
+}
+
+.payout-container {
+  width: 50%;
+}
+
+.currency-container {
+  width: 25%;
 }
 
 .button {
