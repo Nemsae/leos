@@ -16,6 +16,11 @@ const Nav = () => (
       </NavLink>
     </li>
     <li>
+      <NavLink activeClassName='active' to='/payout'>
+        Payout
+      </NavLink>
+    </li>
+    <li>
       <NavLink activeClassName='active' to='/leos'>
         Leos
       </NavLink>

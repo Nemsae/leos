@@ -7,6 +7,7 @@ import Layout from 'react-toolbox/lib/layout/Layout';  //  Takeout
 import Nav from '../Nav';
 import Home from '../Home';
 import Help from '../Help';
+import Payout from '../Payout';
 import Leos from '../Leos';
 
 import theme from '../../assets/react-toolbox/theme';  //  Takeout
@@ -28,6 +29,7 @@ const App = () => (
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/help' component={Help} />
+            <Route exact path='/payout' component={Payout} />
             <Route path='/leos' component={Leos} />
             <Route render={() => <p>Not Found</p>} />
           </Switch>

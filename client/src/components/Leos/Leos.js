@@ -10,6 +10,8 @@ import Passphrase from '../../views/Passphrase';
 import APIactions from '../../actions/APIactions';
 import dispatcher from '../../AppDispatcher';
 
+import './styles.css';
+
 const history = createHistory();
 
 class Leos extends React.Component {
@@ -153,7 +155,7 @@ class Leos extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='leos-container'>
         <LeosCard
           sender={this.state.sender}
           message={this.state.message}
