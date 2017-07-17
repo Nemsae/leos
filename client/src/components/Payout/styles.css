@@ -13,18 +13,31 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 500px;
 }
 
 .benchmark-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 25%;
+  margin: 10px;
 }
 
 .payout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 50%;
+  margin: 10px;
 }
 
 .currency-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 25%;
+  margin: 10px;
 }
 
 .button {
