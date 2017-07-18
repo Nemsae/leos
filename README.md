@@ -11,10 +11,10 @@
 ### Encrypted messages are persisted on a MongoDB server.
 
 ### TODO
-1. ***change post to a get, so we can put in myEther var into the query params***
-1. ***change name of initial computeWithPercentage3***
-1. ***add computeWithPercentage3***
-1. ***Add navigation to display Help/How to Use***
+1. ~~change post to a get, so we can put in myEther var into the query params~~
+1. ~~change name of initial computeWithPercentage3~~
+1. ~~add computeWithPercentage3~~
+1. ~~Add navigation to display Help/How to Use~~
 1. REMOVE thunk, react toolbox and flux
 1. REMOVE AppDispatcher and API.js
 1. Stream current exchange rate of the symbol
