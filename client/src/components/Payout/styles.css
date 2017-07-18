@@ -40,6 +40,16 @@
   margin: 10px;
 }
 
+.currency-rate {
+  margin: 90px 0 90px 0;
+  font-size: xx-large;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  width: 95%;
+  text-align: center;
+}
+
 .button {
   color: #e6e6e6;
   background: #0a0a0a;

@@ -22,6 +22,10 @@ class Trades extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.props.getCurrentRate(this.state.symbol);
+  }
+
   handleCurrencyChange = (event, index, value) => {
     this.props.getCurrentRate(value);
     this.setState({ symbol: value });
@@ -54,7 +58,7 @@ class Trades extends React.Component {
               <MenuItem value='ETHUSD' primaryText='ETHUSD' />
               <MenuItem value='ETHBTC' primaryText='ETHBTC' />
             </SelectField>
-            <h3>{this.props.currency.rate}</h3>
+            <p className='currency-rate'>{this.props.currency.rate}</p>
             <h3>REFRESH</h3>
           </Paper>
         </div>
