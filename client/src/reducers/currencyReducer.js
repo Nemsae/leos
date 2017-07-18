@@ -15,6 +15,7 @@ const currencyReducer = (state = initialState, action) => {
       });
     case RECEIVE_RATE:
       return Object.assign({}, state, {
+        isFetching: false,
         rate: action.payload,
       });
     default:

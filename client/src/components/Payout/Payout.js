@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
+/*  MATERIAL UI  */
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import RefreshIcon from 'material-ui/svg-icons/action/autorenew';
+import CircularProgress from 'material-ui/CircularProgress';
+
+import { fetchCurrentRate } from '../../actions/APIactions';
 
 import './styles.css';
-
-// import APIactions from '../../actions/APIactions';
-import { fetchCurrentRate } from '../../actions/APIactions';
 
 class Trades extends React.Component {
   constructor(props) {
@@ -29,6 +32,10 @@ class Trades extends React.Component {
   handleCurrencyChange = (event, index, value) => {
     this.props.getCurrentRate(value);
     this.setState({ symbol: value });
+  }
+
+  refreshCurrencyRate = () => {
+    this.props.getCurrentRate(this.state.symbol);
   }
 
   render() {
@@ -58,8 +65,18 @@ class Trades extends React.Component {
               <MenuItem value='ETHUSD' primaryText='ETHUSD' />
               <MenuItem value='ETHBTC' primaryText='ETHBTC' />
             </SelectField>
-            <p className='currency-rate'>{this.props.currency.rate}</p>
+            <p className='currency-rate'>
+              {this.props.currency.isFetching ? <CircularProgress /> : this.props.currency.rate}
+            </p>
             <h3>REFRESH</h3>
+            <IconButton
+              tooltip='REFRESH'
+              tooltipPosition='top-center'
+              tooltipStyles={{ fontSize: '18px' }}
+              onClick={this.refreshCurrencyRate}
+            >
+              <RefreshIcon />
+            </IconButton>
           </Paper>
         </div>
       </Paper>
