@@ -65,18 +65,28 @@ class Trades extends React.Component {
               <MenuItem value='ETHUSD' primaryText='ETHUSD' />
               <MenuItem value='ETHBTC' primaryText='ETHBTC' />
             </SelectField>
-            <p className='currency-rate'>
-              {this.props.currency.isFetching ? <CircularProgress /> : this.props.currency.rate}
-            </p>
-            <h3>REFRESH</h3>
-            <IconButton
-              tooltip='REFRESH'
-              tooltipPosition='top-center'
-              tooltipStyles={{ fontSize: '18px' }}
-              onClick={this.refreshCurrencyRate}
-            >
-              <RefreshIcon />
-            </IconButton>
+            <div className='currency-rate'>
+              {
+                this.props.currency.isFetching ?
+                  <CircularProgress
+                    color='white'
+                    size={30}
+                    style={{ marginTop: 'auto' }}
+                  />
+                :
+                  this.props.currency.rate
+              }
+            </div>
+            <div className='button-footer'>
+              <IconButton
+                tooltip='REFRESH'
+                tooltipPosition='top-center'
+                tooltipStyles={{ fontSize: '18px' }}
+                onClick={this.refreshCurrencyRate}
+              >
+                <RefreshIcon />
+              </IconButton>
+            </div>
           </Paper>
         </div>
       </Paper>

@@ -19,8 +19,21 @@ function receiveRate(data) {
   };
 }
 
+//  Testing spinner
+// function testSpinner() {
+//   return {
+//     type: 'TEST_SPINNER',
+//   };
+// }
+
 export function fetchCurrentRate(symbol) {
   return (dispatch) => {
+    // if (symbol === 'spinner') {
+    //   dispatch(testSpinner());
+    //   return;
+    // }
+    //
+    // else
     dispatch(requestRate(symbol));
     axios.get(`/api/leos/exchangeRate?symbol=${symbol}`)
     .then((res) => {

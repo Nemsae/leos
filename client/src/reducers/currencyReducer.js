@@ -8,6 +8,10 @@ const initialState = {
 
 const currencyReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'TEST_SPINNER':
+      return Object.assign({}, state, {
+        isFetching: true,
+      });
     case REQUEST_RATE:
       return Object.assign({}, state, {
         isFetching: true,
