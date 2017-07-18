@@ -9,8 +9,15 @@ exports.currentRate = (request, response) => {
 
   axios.get(tickerUrl)
     .then((res) => {
-      response.send(`Current exchange rate of ${symbol} ` +
-        `is ${+res.data.last_price}`);
+      const lastPrice = +res.data.last_price;
+      // response.write(`Current exchange rate of ${symbol} ` +
+      //   `is ${lastPrice}`);
+      const packet = {
+        message: `Current exchange rate of ${symbol} ` +
+          `is ${lastPrice}`,
+        lastPrice,
+      };
+      response.send(packet);
     })
     .catch((err) => {
       console.log('err: ', err);

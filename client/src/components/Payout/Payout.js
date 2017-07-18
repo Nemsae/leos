@@ -9,9 +9,8 @@ import MenuItem from 'material-ui/MenuItem';
 
 import './styles.css';
 
-// import { fetchCurrentRate } from '../../actions/APIactions';
-import APIactions from '../../actions/APIactions';
-console.log('APIactions: ', APIactions);
+// import APIactions from '../../actions/APIactions';
+import { fetchCurrentRate } from '../../actions/APIactions';
 
 class Trades extends React.Component {
   constructor(props) {
@@ -25,7 +24,6 @@ class Trades extends React.Component {
 
   handleCurrencyChange = (event, index, value) => {
     this.props.getCurrentRate(value);
-    // APIactions(value);
     this.setState({ symbol: value });
   }
 
@@ -56,7 +54,7 @@ class Trades extends React.Component {
               <MenuItem value='ETHUSD' primaryText='ETHUSD' />
               <MenuItem value='ETHBTC' primaryText='ETHBTC' />
             </SelectField>
-            <h3>{this.state.rate}</h3>
+            <h3>{this.props.currency.rate}</h3>
             <h3>REFRESH</h3>
           </Paper>
         </div>
@@ -74,7 +72,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     // fetchOCRText: (url) => dispatch(fetchOCRText(url)),
-    getCurrentRate: symbol => dispatch(APIactions(symbol)),
+    getCurrentRate: symbol => dispatch(fetchCurrentRate(symbol)),
   };
 }
 //
