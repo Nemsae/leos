@@ -9,6 +9,10 @@ import MenuItem from 'material-ui/MenuItem';
 
 import './styles.css';
 
+// import { fetchCurrentRate } from '../../actions/APIactions';
+import APIactions from '../../actions/APIactions';
+console.log('APIactions: ', APIactions);
+
 class Trades extends React.Component {
   constructor(props) {
     super(props);
@@ -20,11 +24,12 @@ class Trades extends React.Component {
   }
 
   handleCurrencyChange = (event, index, value) => {
+    this.props.getCurrentRate(value);
+    // APIactions(value);
     this.setState({ symbol: value });
   }
 
   render() {
-    console.log('this.props: ', this.props);
     return (
       <Paper className='trades-container'>
         <h1>Trades</h1>
@@ -69,6 +74,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     // fetchOCRText: (url) => dispatch(fetchOCRText(url)),
+    getCurrentRate: symbol => dispatch(APIactions(symbol)),
   };
 }
 //
