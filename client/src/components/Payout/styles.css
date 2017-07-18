@@ -2,11 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*height: 100,
-  width: 100,
-  margin: 20;
-  text-align: 'center';
-  display: 'inline-block';*/
 }
 
 .computation-container {
@@ -43,15 +38,21 @@
 
 .currency-rate {
   display: flex;
-  margin: 90px 0 90px 0;
+  position: absolute;
+  bottom: 42%;
   padding: 3px 0 3px 0;
-  font-size: 26px;
+  height: 54px;
   font-weight: bold;
   background-color: black;
   color: white;
   width: 95%;
   text-align: center;
   justify-content: center;
+  align-items: center;
+}
+
+.currency-rate__text {
+  font-size: 48px;
 }
 
 .button-footer {

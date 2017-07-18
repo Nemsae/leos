@@ -71,10 +71,11 @@ class Trades extends React.Component {
                   <CircularProgress
                     color='white'
                     size={30}
-                    style={{ marginTop: 'auto' }}
                   />
                 :
-                  this.props.currency.rate
+                  <p className='currency-rate__text'>
+                    {this.props.currency.rate}
+                  </p>
               }
             </div>
             <div className='button-footer'>
@@ -102,7 +103,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // fetchOCRText: (url) => dispatch(fetchOCRText(url)),
     getCurrentRate: symbol => dispatch(fetchCurrentRate(symbol)),
   };
 }
