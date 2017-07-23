@@ -1,5 +1,3 @@
-const consts = {
-  RECEIVE_ENCRYPTED_MESSAGE: 'RECEIVE_ENCRYPTED_MESSAGE',
-};
-
-export default consts;
+export const REQUEST_RATE = 'REQUEST_RATE';
+export const RECEIVE_RATE = 'RECEIVE_RATE';
+export const TEST_SPINNER = 'TEST_SPINNER';

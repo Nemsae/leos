@@ -15,8 +15,10 @@
 1. ~~change name of initial computeWithPercentage3~~
 1. ~~add computeWithPercentage3~~
 1. ~~Add navigation to display Help/How to Use~~
+1. MOVE from thunk to Saga
 1. REMOVE thunk, react toolbox and flux
 1. REMOVE AppDispatcher and API.js
+1. Add copy to clipboard for currency-rate and benchmark
 1. Stream current exchange rate of the symbol
 1. Deploy (with an interface) to ElasticBeanstalk
 1. Save actual payouts to MongoDB/DynamoDB
