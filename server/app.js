@@ -22,13 +22,19 @@ if (process.env.NODE_ENV === 'production') {
 /*  EJS TEMPLATE  *//*  EJS TEMPLATE  *//*  EJS TEMPLATE  */
 app.set('view engine', 'ejs');
 
-// use res.render to load up an ejs view file
-
 //  index page
 app.get('/', (req, res) => {
-  // res.render will look in 'views' folder for the view
-  // so the full path would look like '/views/pages/index'
-  res.render('pages/index');
+  const drinks = [
+    { name: 'Bloody Mart', drunkness: 3 },
+    { name: 'Martini', drunkness: 5 },
+    { name: 'Scoth', drunkness: 10 },
+  ];
+  const tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
+
+  res.render('pages/index', {
+    drinks,
+    tagline,
+  });
 });
 
 //  about page
