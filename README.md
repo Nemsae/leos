@@ -15,6 +15,7 @@
 1. ~~change name of initial computeWithPercentage3~~
 1. ~~add computeWithPercentage3~~
 1. ~~Add navigation to display Help/How to Use~~
+1. Local Storage to save settings (like which symbol to load)
 1. MOVE from thunk to Saga
 1. REMOVE thunk, react toolbox and flux
 1. REMOVE AppDispatcher and API.js
