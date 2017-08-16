@@ -8,7 +8,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // import theme from './assets/react-toolbox/theme.css';  //  TAKEOUT
 import registerServiceWorker from './registerServiceWorker';
-import App from './components/App';
+import App from './containers/App';
 
 import './index.css';
 import store from './configureStore';
