@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+/* Components */
+import Icon from '../../components/Icon'
+
 /*  MATERIAL UI  */
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -41,6 +44,8 @@ class Trades extends React.Component {
   render() {
     return (
       <Paper className='trades-container'>
+        <Icon icon={'facebook'} />
+        <Icon icon={'wrench'} />
         <h1>Trades</h1>
         <RaisedButton label='Default' />
         <Link className='button' to='/help'>

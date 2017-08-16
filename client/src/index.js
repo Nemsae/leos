@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-// import ThemeProvider from 'react-toolbox/lib/ThemeProvider';  //  TAKEOUT
-
-// import theme from './assets/react-toolbox/theme.css';  //  TAKEOUT
 import registerServiceWorker from './registerServiceWorker';
-import App from './containers/App';
 
+import App from './containers/App';
 import './index.css';
 import store from './configureStore';
 
