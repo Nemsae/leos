@@ -17,7 +17,7 @@ const middleware = () => (
     thunkMiddleware,  //  lets us dispatch() functions
     loggerMiddleware,  //  logs actions
   )
- )
+);
 
 const store = createStore(
   rootReducer,
