@@ -44,8 +44,8 @@ class Trades extends React.Component {
   render() {
     return (
       <Paper className='trades-container'>
-        <Icon icon={'facebook'} />
-        <Icon icon={'wrench'} />
+        <Icon name={'facebook'} />
+        <Icon name={'wrench'} />
         <h1>Trades</h1>
         <RaisedButton label='Default' />
         <Link className='button' to='/help'>
