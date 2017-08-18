@@ -12,7 +12,7 @@ describe('Payout', () => {
     const renderer = TestUtils.createRenderer();
     renderer.render(<Payout store={store} />);  //  shallow rendering
     const actual = renderer.getRenderOutput().props.currency.symbol;
-    const expected = 'EOSETH'
+    const expected = 'EOSETH';
     console.log('actual: ', actual);
     console.log('expected: ', expected);
     expect(actual).toEqual(expected);
