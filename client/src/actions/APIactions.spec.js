@@ -2,7 +2,6 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 import expect from 'expect';
-// import { fetchCurrentRate } from '../__mocks__/request';
 import { requestRate, receiveRate, fetchCurrentRate } from './APIactions';
 
 const middlewares = [ thunk ];
@@ -31,19 +30,12 @@ describe('API async actions', () => {
     ];
 
     const store = mockStore({ symbol: '', rate: 0 });
-    console.log('fetchCurrentRate("EOSETH"): ', fetchCurrentRate('EOSETH'));
+
     return store.dispatch(fetchCurrentRate('EOSETH'))
       .then(() => {
-        console.log('1: ', store.getActions());
         expect(store.getActions()).toEqual(expectedActions);
       });
   });
-
-  // it('should return a message and rate', () => {
-  //   const actual = fetchCurrentRate('EOSETH')
-  //   const expected = { message: 'Current exchange rate of EOSETH is 0.004057', lastPrice: 0.004057 };
-  //   expect(actual).toEqual(expected);
-  // });
 });
 
 describe('API actions', () => {
