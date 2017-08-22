@@ -32,13 +32,13 @@ export function fetchCurrentRate(symbol) {
     //
     // else
     dispatch(requestRate(symbol));
-    axios.get(`/api/leos/exchangeRate?symbol=${symbol}`)
-    .then((res) => {
-      dispatch(receiveRate(res.data));
-    })
-    .catch((err) => {
-      console.log('err: ', err);
-    });
+    return axios.get(`http://localhost:3001/api/leos/exchangeRate?symbol=${symbol}`)
+      .then((res) => {
+        dispatch(receiveRate(res.data));
+      })
+      .catch((err) => {
+        console.log('err: ', err);
+      });
   };
 }
 
