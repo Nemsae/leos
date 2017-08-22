@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const REQUEST_RATE = 'REQUEST_RATE';
-function requestRate(symbol) {
+export function requestRate(symbol) {
   return {
     type: REQUEST_RATE,
     payload: symbol,
@@ -9,7 +9,7 @@ function requestRate(symbol) {
 }
 
 export const RECEIVE_RATE = 'RECEIVE_RATE';
-function receiveRate(data) {
+export function receiveRate(data) {
   return {
     type: RECEIVE_RATE,
     payload: data.lastPrice,

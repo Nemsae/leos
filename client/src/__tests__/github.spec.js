@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import expect from 'expect';
-import request from '../__mocks__/request';
+import { request } from '../__mocks__/request';
 
 // jest.mock('../request');
 
@@ -15,6 +15,7 @@ describe('#getUser() using Promises', () => {
   ));
 });
 
+//  using ES2016 async/await
 // describe('#getUser() using Promises', () => {
 //   it('should load user data', async () => {
 //     // getUser('nemsae')
