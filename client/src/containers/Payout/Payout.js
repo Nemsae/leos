@@ -17,6 +17,7 @@ import './styles.css';
 /* Components */
 import Icon from '../../components/Icon';
 import { CurrencyLoader } from '../../components/Currency';
+import { CurrencyFooter } from '../../components/CurrencyFooter';
 
 export class Trades extends React.Component {
   constructor(props) {
@@ -73,16 +74,9 @@ export class Trades extends React.Component {
               isFetching={this.props.currency.isFetching}
               rate={this.props.currency.rate}
             />
-            <div className='button-footer'>
-              <IconButton
-                tooltip='REFRESH'
-                tooltipPosition='top-center'
-                tooltipStyles={{ fontSize: '18px' }}
-                onClick={this.refreshCurrencyRate}
-              >
-                <RefreshIcon />
-              </IconButton>
-            </div>
+            <CurrencyFooter
+              refreshCurrencyRate={this.refreshCurrencyRate}
+            />
           </Paper>
         </div>
       </Paper>
