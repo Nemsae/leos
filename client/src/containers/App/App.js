@@ -12,7 +12,7 @@ import Leos from '../Leos';
 
 // import theme from '../../assets/react-toolbox/theme';  //  Takeout
 
-import style from './styles';
+// import style from './styles';
 
 const App = () => (
   <BrowserRouter>

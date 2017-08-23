@@ -7,14 +7,14 @@ expect.extend(expectJSX);
 import Payout from './Payout';
 import store from '../../configureStore'
 
-describe('Payout', () => {
+describe('Payout container', () => {
   it('should render with initial state symbol of EOSETH', () => {
     const renderer = TestUtils.createRenderer();
     renderer.render(<Payout store={store} />);  //  shallow rendering
     const actual = renderer.getRenderOutput().props.currency.symbol;
     const expected = 'EOSETH';
-    console.log('actual: ', actual);
-    console.log('expected: ', expected);
+    // console.log('actual: ', actual);
+    // console.log('expected: ', expected);
     expect(actual).toEqual(expected);
   });
   // it('should render title', () => {

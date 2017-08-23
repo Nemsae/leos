@@ -13,15 +13,43 @@ describe('currencyReducer', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('should update isFetching for action type REQUEST_RATE', () => {
+  it('should update isFetching for action type TEST_SPINNER', () => {
     const action = {
-      type: types.REQUEST_RATE,
+      type: types.TEST_SPINNER,
     };
     const actual = currencyReducer(undefined, action);
     const expected = {
       symbol: 'EOSETH',
       rate: 0,
       isFetching: true,
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  it('should update isFetching and symbol for action type REQUEST_RATE', () => {
+    const action = {
+      type: types.REQUEST_RATE,
+      payload: 'EOSETH',
+    };
+    const actual = currencyReducer(undefined, action);
+    const expected = {
+      symbol: 'EOSETH',
+      rate: 0,
+      isFetching: true,
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  it('should update isFetching and rate for action type RECEIVE_RATE', () => {
+    const action = {
+      type: types.RECEIVE_RATE,
+      payload: 0.0045,
+    };
+    const actual = currencyReducer(undefined, action);
+    const expected = {
+      symbol: 'EOSETH',
+      rate: 0.0045,
+      isFetching: false,
     };
     expect(actual).toEqual(expected);
   });

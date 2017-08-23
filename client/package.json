@@ -39,7 +39,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha './src/**/*.spec.js' --compilers js:babel-core/register --require ignore-styles",
+    "test": "mocha './src/**/*.spec.js' --compilers js:babel-core/register --require ignore-styles --watch",
     "toolbox": "react-toolbox-themr",
     "eject": "react-scripts eject"
   }
