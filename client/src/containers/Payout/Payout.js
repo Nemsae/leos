@@ -5,10 +5,6 @@ import { connect } from 'react-redux';
 /*  MATERIAL UI  */
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import RefreshIcon from 'material-ui/svg-icons/action/autorenew';
 
 import { fetchCurrentRate } from '../../actions/APIactions';
 
@@ -18,6 +14,7 @@ import './styles.css';
 import Icon from '../../components/Icon';
 import { CurrencyLoader } from '../../components/Currency';
 import { CurrencyFooter } from '../../components/CurrencyFooter';
+import { CurrencySelector } from '../../components/CurrencySelector';
 
 export class Trades extends React.Component {
   constructor(props) {
@@ -60,16 +57,10 @@ export class Trades extends React.Component {
           </Paper>
           <Paper className='currency-container'>
             <h1>Current Rate</h1>
-            <SelectField
-              floatingLabelText='CURRENCY'
-              value={this.state.symbol}
-              onChange={this.handleCurrencyChange}
-            >
-              <MenuItem value='EOSETH' primaryText='EOSETH' />
-              <MenuItem value='EOSUSD' primaryText='EOSUSD' />
-              <MenuItem value='ETHUSD' primaryText='ETHUSD' />
-              <MenuItem value='ETHBTC' primaryText='ETHBTC' />
-            </SelectField>
+            <CurrencySelector
+              symbol={this.state.symbol}
+              handleCurrencyChange={this.handleCurrencyChange}
+            />
             <CurrencyLoader
               isFetching={this.props.currency.isFetching}
               rate={this.props.currency.rate}
@@ -95,7 +86,7 @@ function mapDispatchToProps(dispatch) {
     getCurrentRate: symbol => dispatch(fetchCurrentRate(symbol)),
   };
 }
-//
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
