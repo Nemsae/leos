@@ -30,6 +30,7 @@
     "enzyme": "^2.9.1",
     "expect": "^1.20.2",
     "expect-jsx": "^3.0.0",
+    "jest": "^20.0.4",
     "jsdom": "11.2.0",
     "jsdom-global": "3.0.2",
     "mocha": "^3.5.0",
