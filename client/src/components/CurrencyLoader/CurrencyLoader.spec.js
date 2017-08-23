@@ -35,7 +35,10 @@ describe('<CurrencyLoader />', () => {
 
   it('should render the spinner when isFetching is true', () => {
     const { enzymeWrapper } = setup(true);
-    // const html = enzymeWrapper.html();
+
+    const html = enzymeWrapper.html();
+    console.log('html: ', html);
+
     expect(enzymeWrapper.find('div').first().hasClass('currency-rate')).toBe(true);
 
     //  Props check
