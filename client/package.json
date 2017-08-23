@@ -41,7 +41,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha './src/**/*.spec.js' --compilers js:babel-core/register --require ignore-styles -r jsdom-global/register --watch",
+    "test": "mocha './src/**/*.spec.js' --compilers js:babel-core/register --require ignore-styles --watch",
+    "test-all": "mocha './src/**/*.spec.js' --compilers js:babel-core/register --require ignore-styles -r jsdom-global/register --watch",
     "toolbox": "react-toolbox-themr",
     "eject": "react-scripts eject"
   }

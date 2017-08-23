@@ -8,7 +8,7 @@ import * as types from '../constants';
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
 
-describe('API async actions', () => {
+describe('API.fetchCurrentRate ', () => {
   afterEach(() => {
     nock.cleanAll();
   });
