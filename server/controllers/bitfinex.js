@@ -18,6 +18,7 @@ exports.currentRate = (request, response) => {
         lastPrice,
       };
       response.header('Access-Control-Allow-Origin', '*');
+      response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
       response.send(packet);
     })
     .catch((err) => {
