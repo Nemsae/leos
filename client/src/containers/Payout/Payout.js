@@ -75,17 +75,18 @@ export class Trades extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    currency: state.currencyRate,
-  };
-}
+const mapStateToProps = state => ({
+  currency: state.currencyRate,
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getCurrentRate: symbol => dispatch(fetchCurrentRate(symbol)),
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  getCurrentRate(symbol) {
+    dispatch(fetchCurrentRate(symbol));
+  },
+  // getCurrentRate: (symbol) => {
+  //   dispatch(fetchCurrentRate(symbol));
+  // },
+});
 
 export default connect(
   mapStateToProps,
