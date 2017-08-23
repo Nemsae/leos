@@ -18,7 +18,7 @@ import './styles.css';
 import Icon from '../../components/Icon';
 import { CurrencyLoader } from '../../components/Currency';
 
-class Trades extends React.Component {
+export class Trades extends React.Component {
   constructor(props) {
     super(props);
 
@@ -44,8 +44,7 @@ class Trades extends React.Component {
   render() {
     return (
       <Paper className='trades-container'>
-        <Icon name={'facebook'} />
-        <Icon name={'wrench'} />
+        {/* <Icon name={'facebook'} /> */}
         <h1>Trades</h1>
         <RaisedButton label='Default' />
         <Link className='button' to='/help'>
