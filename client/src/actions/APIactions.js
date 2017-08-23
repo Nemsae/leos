@@ -1,17 +1,18 @@
 import axios from 'axios';
+import * as types from '../constants';
 
-export const REQUEST_RATE = 'REQUEST_RATE';
+// export const REQUEST_RATE = 'REQUEST_RATE';
 export function requestRate(symbol) {
   return {
-    type: REQUEST_RATE,
+    type: types.REQUEST_RATE,
     payload: symbol,
   };
 }
 
-export const RECEIVE_RATE = 'RECEIVE_RATE';
+// export const RECEIVE_RATE = 'RECEIVE_RATE';
 export function receiveRate(data) {
   return {
-    type: RECEIVE_RATE,
+    type: types.RECEIVE_RATE,
     payload: data.lastPrice,
   };
 }

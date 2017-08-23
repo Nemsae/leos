@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import nock from 'nock';
 import expect from 'expect';
 import { requestRate, receiveRate, fetchCurrentRate } from './APIactions';
+import * as types from '../constants';
 
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
@@ -20,11 +21,11 @@ describe('API async actions', () => {
 
     const expectedActions = [
       {
-        type: 'REQUEST_RATE',
+        type: types.REQUEST_RATE,
         payload: symbol,
       },
       {
-        type: 'RECEIVE_RATE',
+        type: types.RECEIVE_RATE,
         payload: 0.004057,
       },
     ];
@@ -49,7 +50,7 @@ describe('API actions', () => {
     expect(actual).toEqual(expectedAction);
   });
 
-  it('receiveRate should create an action to update rate of given symbol', () => {
+  it('receiveRate should create an action to update the exchange rate', () => {
     const data = { message: 'Current exchange rate of EOSETH is 0.004057', lastPrice: 0.004057 };
     const expectedAction = {
       type: 'RECEIVE_RATE',
