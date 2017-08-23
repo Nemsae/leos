@@ -12,7 +12,7 @@ import './styles.css';
 
 /* Components */
 import Icon from '../../components/Icon';
-import { CurrencyLoader } from '../../components/Currency';
+import { CurrencyLoader } from '../../components/CurrencyLoader';
 import { CurrencyFooter } from '../../components/CurrencyFooter';
 import { CurrencySelector } from '../../components/CurrencySelector';
 
