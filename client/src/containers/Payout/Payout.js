@@ -2,9 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-/* Components */
-import Icon from '../../components/Icon'
-
 /*  MATERIAL UI  */
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -12,13 +9,13 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import RefreshIcon from 'material-ui/svg-icons/action/autorenew';
-// import CircularProgress from 'material-ui/CircularProgress';
 
 import { fetchCurrentRate } from '../../actions/APIactions';
 
 import './styles.css';
 
 /* Components */
+import Icon from '../../components/Icon';
 import { CurrencyLoader } from '../../components/Currency';
 
 class Trades extends React.Component {
@@ -77,19 +74,6 @@ class Trades extends React.Component {
               isFetching={this.props.currency.isFetching}
               rate={this.props.currency.rate}
             />
-            {/* <div className='currency-rate'>
-              {
-                this.props.currency.isFetching ?
-                  <CircularProgress
-                    color='white'
-                    size={30}
-                  />
-                :
-                  <p className='currency-rate__text'>
-                    {this.props.currency.rate}
-                  </p>
-              }
-            </div> */}
             <div className='button-footer'>
               <IconButton
                 tooltip='REFRESH'

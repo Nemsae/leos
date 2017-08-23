@@ -1,7 +1,7 @@
 import React from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 
-export const CurrencyLoader = props => (
+const CurrencyLoader = props => (
   <div className='currency-rate'>
     {
       props.isFetching ?
@@ -16,3 +16,5 @@ export const CurrencyLoader = props => (
     }
   </div>
 );
+
+export default CurrencyLoader;
