@@ -29,15 +29,10 @@ const setup = () => {
 describe('<CurrencyFooter />', () => {
   it('should render self and its subcomponents with the correct props', () => {
     const { enzymeWrapper, props } = setup();
-    // const html = enzymeWrapper.html();
-    // console.log('html: ', html);
 
     expect(enzymeWrapper.find('div').first().hasClass('button-footer')).toBe(true);
     const IconButtonProps = enzymeWrapper.find('IconButton').props();
-    //
-    // tooltip='REFRESH'
-    // tooltipPosition='top-center'
-    // tooltipStyles={{ fontSize: '18px' }}
+
     // onClick={props.refreshCurrencyRate}
     console.log('IconButtonProps.onClick: ', IconButtonProps.onClick);
     console.log('typeof IconButtonProps.onClick: ', typeof IconButtonProps.onClick);
@@ -45,7 +40,7 @@ describe('<CurrencyFooter />', () => {
     expect(IconButtonProps.tooltip).toBe('REFRESH');
     expect(IconButtonProps.tooltipPosition).toBe('top-center');
     expect(IconButtonProps.tooltipStyles).toEqual({ fontSize: '18px' });
-    expect(typeof IconButtonProps.onClick).toEqual('object');
+    // expect(typeof IconButtonProps.onClick).toEqual('object');
 
     // const button = enzymeWrapper.find('IconButton');
 

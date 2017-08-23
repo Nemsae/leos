@@ -16,7 +16,7 @@ import { CurrencyLoader } from '../../components/CurrencyLoader';
 import { CurrencyFooter } from '../../components/CurrencyFooter';
 import { CurrencySelector } from '../../components/CurrencySelector';
 
-export class Trades extends React.Component {
+export class Payout extends React.Component {
   constructor(props) {
     super(props);
 
@@ -43,7 +43,7 @@ export class Trades extends React.Component {
     return (
       <Paper className='trades-container'>
         {/* <Icon name={'facebook'} /> */}
-        <h1>Trades</h1>
+        <h1>Payout</h1>
         <RaisedButton label='Default' />
         <Link className='button' to='/help'>
           Will Go to Records of Payout
@@ -91,4 +91,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Trades);
+)(Payout);
