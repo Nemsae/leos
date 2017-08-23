@@ -7,7 +7,20 @@ expect.extend(expectJSX);
 import Payout from './Payout';
 import store from '../../configureStore'
 
+/* ENZYME */
+import { mount } from 'enzyme';
+
+function setup() {
+  const props = {
+    
+  }
+}
+
 describe('Payout container', () => {
+  it('should render the title', () => {
+
+  });
+
   it('should render with initial state symbol of EOSETH', () => {
     const renderer = TestUtils.createRenderer();
     renderer.render(<Payout store={store} />);  //  shallow rendering
@@ -24,15 +37,6 @@ describe('Payout container', () => {
   //   const expected = <h1>Trades</h1>;
   //   console.log('actual: ', actual);
   //   console.log('expected: ', expected);
-  //   expect(actual).toIncludeJSX(expected);
-  // });
-  // it('should render something', () => {
-  //   const renderer = TestUtils.createRenderer();
-  //   renderer.render(<Payout store={store} />);  //  shallow rendering
-  //   const actual = renderer.getRenderOutput();
-  //   console.log('actual: ', actual);
-  //   // console.log('renderer.getRenderOutput(): ', renderer.getRenderOutput());
-  //   const expected = 'Current Rate'
   //   expect(actual).toIncludeJSX(expected);
   // });
 });

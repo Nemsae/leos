@@ -12,11 +12,14 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import RefreshIcon from 'material-ui/svg-icons/action/autorenew';
-import CircularProgress from 'material-ui/CircularProgress';
+// import CircularProgress from 'material-ui/CircularProgress';
 
 import { fetchCurrentRate } from '../../actions/APIactions';
 
 import './styles.css';
+
+/* Components */
+import { CurrencyLoader } from '../../components/Currency';
 
 class Trades extends React.Component {
   constructor(props) {
@@ -70,7 +73,11 @@ class Trades extends React.Component {
               <MenuItem value='ETHUSD' primaryText='ETHUSD' />
               <MenuItem value='ETHBTC' primaryText='ETHBTC' />
             </SelectField>
-            <div className='currency-rate'>
+            <CurrencyLoader
+              isFetching={this.props.currency.isFetching}
+              rate={this.props.currency.rate}
+            />
+            {/* <div className='currency-rate'>
               {
                 this.props.currency.isFetching ?
                   <CircularProgress
@@ -82,7 +89,7 @@ class Trades extends React.Component {
                     {this.props.currency.rate}
                   </p>
               }
-            </div>
+            </div> */}
             <div className='button-footer'>
               <IconButton
                 tooltip='REFRESH'

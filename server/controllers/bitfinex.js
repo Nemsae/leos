@@ -17,6 +17,7 @@ exports.currentRate = (request, response) => {
           `is ${lastPrice}`,
         lastPrice,
       };
+      response.header('Access-Control-Allow-Origin', '*');
       response.send(packet);
     })
     .catch((err) => {
