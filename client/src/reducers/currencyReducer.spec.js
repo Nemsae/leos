@@ -3,7 +3,7 @@ import currencyReducer from './currencyReducer';
 import * as types from '../constants';
 
 describe('REDUCER: currencyReducer', () => {
-  it('should render initial state with no/wrong case', () => {
+  it('should render default state with unknown case', () => {
     const actual = currencyReducer(undefined, {});
     const expected = {
       symbol: 'EOSETH',
