@@ -24,6 +24,9 @@ const Todo = props => (
         ))
       }
     </ul>
+    <a id='SHOW_ALL' className='link' href='' onClick={props.setFilter}>ALL</a>
+    <a id='SHOW_ACTIVE' className='link' href='' onClick={props.setFilter}>ACTIVE</a>
+    <a id='SHOW_COMPLETED' className='link' href='' onClick={props.setFilter}>COMPLETED</a>
   </div>
 );
 

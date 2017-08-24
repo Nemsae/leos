@@ -1,0 +1,11 @@
+.todo {
+  text-align: center;
+}
+
+.todo a {
+  margin: 0 1rem;
+}
+
+.todo a:active {
+  font-weight: bold;
+}

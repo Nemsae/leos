@@ -5,6 +5,8 @@ import Counter from '../../components/Counter';
 import Todo from '../../components/Todo';
 import { increment, decrement } from '../../actions/CounterActions';
 import { addTodo, toggleTodo } from '../../actions/TodoActions';
+import { setFilter } from '../../actions/FilterActions';
+import * as types from '../../constants';
 import './styles.css';
 
 export class Help extends React.Component {
@@ -30,7 +32,36 @@ export class Help extends React.Component {
     this.props.toggleTodo(id);
   }
 
+  setFilter = (e) => {
+    e.preventDefault();
+    const filter = e.target.id;
+    this.props.setFilter(filter);
+  }
+
   render() {
+    let filteredTodos;
+    console.log('this.props.filter: ', this.props.filter);
+    switch (this.props.filter) {
+      case types.SHOW_ALL:
+        filteredTodos = this.props.todos;
+        break;
+      case types.SHOW_ACTIVE:
+        console.log('Sanity:SHOW_ACTIVE');
+        filteredTodos = this.props.todos.map((todo) => {
+          if (!todo.isCompleted) return todo;
+        });
+        console.log('filteredTodos:ACTIVE ', filteredTodos);
+        break;
+      case types.SHOW_COMPLETED:
+        filteredTodos = this.props.todos.map((todo) => {
+          if (todo.isCompleted) return todo;
+        });
+        console.log('filteredTodos:COMPLETED ', filteredTodos);
+        break;
+      default:
+        filteredTodos = this.props.todos;
+    }
+
     return (
       <div className='home-container'>
         <h1>Help</h1>
@@ -41,10 +72,11 @@ export class Help extends React.Component {
         />
         <Todo
           todoText={this.state.todoText}
-          todos={this.props.todos}
+          todos={filteredTodos}
           addTodo={this.addTodo}
           toggleTodo={this.toggleTodo}
           handleTextChange={this.handleTextChange}
+          setFilter={this.setFilter}
         />
       </div>
     );
@@ -54,6 +86,7 @@ export class Help extends React.Component {
 const mapStateToProps = state => ({
   count: state.testCounter.count,
   todos: state.todos,
+  filter: state.visibilityFilter.filter,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -68,6 +101,9 @@ const mapDispatchToProps = dispatch => ({
   },
   toggleTodo: (id) => {
     dispatch(toggleTodo(id));
+  },
+  setFilter: (filter) => {
+    dispatch(setFilter(filter));
   },
 });
 
