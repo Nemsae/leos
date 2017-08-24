@@ -1,5 +1,17 @@
 .todo {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-input {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.todo-filter {
+  display: flex;
+  margin: 1rem;
 }
 
 .todo a {
