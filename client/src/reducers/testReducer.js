@@ -20,6 +20,8 @@ const testReducer = (state = initialState, action) => {
   }
 };
 
+export default testReducer;
+
 const actualState1 = testReducer(
   {
     count: 0,

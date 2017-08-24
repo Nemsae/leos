@@ -1,18 +1,15 @@
 import React from 'react';
-import { connect } from 'redux';
 
-export class Counter extends React.Component {
-  render() {
-    return (
-      <div>{this.props.counter}</div>
-    )
-  }
-}
+import './styles.css';
 
-const mapStateToProps = state => ({
-  counter: state.testCounter,
-});
+const Counter = props => (
+  <div className='counter'>
+    <div>{props.count}</div>
+    <div className='buttons'>
+      <button onClick={props.increment}>+</button>
+      <button onClick={props.decrement}>-</button>
+    </div>
+  </div>
+);
 
-const CounterRedux = connect(mapStateToProps)(Counter);
-
-export default CounterRedux;
+export default Counter;
