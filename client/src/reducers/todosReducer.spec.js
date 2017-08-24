@@ -46,4 +46,30 @@ describe('REDUCER: todosReducer', () => {
     const actual = todosReducer(stateBefore, action);
     expect(actual).toEqual(stateAfter);
   });
+  it('should update a todo with action type TOGGLE_TODO', () => {
+    const stateBefore = [
+      {
+        id: 0,
+        isCompleted: false,
+        text: 'Test my todosReducer',
+      },
+    ];
+    const action = {
+      type: types.UPDATE_TODO,
+      id: 0,
+    };
+    const stateAfter = [
+      {
+        id: 0,
+        isCompleted: true,
+        text: 'Test my todosReducer',
+      },
+    ];
+
+    deepfreeze(stateBefore);
+    deepfreeze(action);
+
+    const actual = todosReducer(stateBefore, action);
+    expect(actual).toEqual(stateAfter);
+  });
 });

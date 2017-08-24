@@ -18,6 +18,15 @@ export const todosReducer = (state = initialState, action) => {
       //   ...state.slice(0, indexToDelete),
       //   ...state.slice(indexToDelete + 1),
       // ];
+    case types.UPDATE_TODO:
+      const indexToUpdate = action.id;
+      return [
+        ...state.slice(0, indexToUpdate),
+        Object.assign({}, state[indexToUpdate], {
+          isCompleted: !state[indexToUpdate].isCompleted,
+        }),
+        ...state.slice(indexToUpdate + 1),
+      ];
     default:
       return state;
   }
