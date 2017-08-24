@@ -27,7 +27,7 @@ export class Payout extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getCurrentRate(this.state.symbol);
+    // this.props.getCurrentRate(this.state.symbol);
   }
 
   handleCurrencyChange = (event, index, value) => {

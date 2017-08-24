@@ -1,8 +1,8 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-
 import rootReducer from './reducers/index';
+import { loadState, saveState } from './localStorage';
 
 //  SAGA
 // import createSagaMiddleware from 'redux-saga';
@@ -10,6 +10,7 @@ import rootReducer from './reducers/index';
 // const sagaMiddleware = createSagaMiddleware();
 // sagaMiddleware.run(rootSaga);
 
+const persistedState = loadState();
 const loggerMiddleware = createLogger();
 
 const middleware = () => (
@@ -21,7 +22,12 @@ const middleware = () => (
 
 const store = createStore(
   rootReducer,
+  persistedState,
   middleware(),
 );
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 export default store;

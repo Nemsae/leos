@@ -47,12 +47,6 @@ describe('PayoutRedux container', () => {
     expect(enzymeWrapper.find('h1').first().text()).toEqual('Trades');
   });
 
-  it('should render <h1>Trades</h1>', () => {
-    const { enzymeWrapper } = setup();
-
-    expect(enzymeWrapper.find('h1').first().text()).toEqual('Trades');
-  });
-
   it('should render with initial state symbol of EOSETH', () => {
     const renderer = TestUtils.createRenderer();
     renderer.render(<PayoutRedux store={store} />);  //  shallow rendering
