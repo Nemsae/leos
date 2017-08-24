@@ -1,5 +1,7 @@
+import * as types from '../constants';
+
 export const incrementCounter = () => ({
-  type: 'INCREMENT',
+  type: types.INCREMENT,
 });
 
 export const increment = (dispatch) => {
@@ -7,7 +9,7 @@ export const increment = (dispatch) => {
 };
 
 export const decrementCounter = () => ({
-  type: 'DECREMENT',
+  type: types.DECREMENT,
 });
 
 export const decrement = (dispatch) => {
