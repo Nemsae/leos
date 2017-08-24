@@ -14,7 +14,7 @@ const Todo = props => (
     <ul>
       {
         props.todos.map(todo => (
-          <li key={todo.id}>
+          <li key={todo.id} onClick={() => props.toggleTodo(todo)}>
             {todo.text}
           </li>
         ))

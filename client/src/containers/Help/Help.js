@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Counter from '../../components/Counter';
 import Todo from '../../components/Todo';
 import { increment, decrement } from '../../actions/CounterActions';
-import { addTodo } from '../../actions/TodoActions';
+import { addTodo, toggleTodo } from '../../actions/TodoActions';
 import './styles.css';
 
 export class Help extends React.Component {
@@ -21,6 +21,13 @@ export class Help extends React.Component {
 
   addTodo = () => {
     this.props.addTodo(this.state.todoText);
+    this.setState({
+      todoText: '',
+    });
+  }
+
+  toggleTodo = (id) => {
+    this.props.toggleTodo(id);
   }
 
   render() {
@@ -36,6 +43,7 @@ export class Help extends React.Component {
           todoText={this.state.todoText}
           todos={this.props.todos}
           addTodo={this.addTodo}
+          toggleTodo={this.toggleTodo}
           handleTextChange={this.handleTextChange}
         />
       </div>
@@ -56,8 +64,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(decrement());
   },
   addTodo: (text) => {
-    console.log('text:mapDispatchToProps ', text);
     dispatch(addTodo(text));
+  },
+  toggleTodo: (id) => {
+    dispatch(toggleTodo(id));
   },
 });
 

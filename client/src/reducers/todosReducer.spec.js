@@ -55,7 +55,7 @@ describe('REDUCER: todosReducer', () => {
       },
     ];
     const action = {
-      type: types.UPDATE_TODO,
+      type: types.TOGGLE_TODO,
       id: 0,
     };
     const stateAfter = [
