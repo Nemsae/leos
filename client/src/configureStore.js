@@ -1,6 +1,8 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+import throttle from 'lodash/throttle';
+
 import rootReducer from './reducers/index';
 import { loadState, saveState } from './localStorage';
 
@@ -30,8 +32,8 @@ const store = createStore(
 
 console.log('store.getState() ', store.getState());  //  loads initial state
 
-store.subscribe(() => {
+store.subscribe(throttle(() => {
   saveState(store.getState());
-});
+}), 1000);
 
 export default store;

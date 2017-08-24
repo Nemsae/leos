@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Counter from '../../components/Counter';
-
+import { increment, decrement } from '../../actions/CounterActions';
 import './styles.css';
 
 export class Help extends React.Component {
@@ -12,8 +12,8 @@ export class Help extends React.Component {
         <h1>Help</h1>
         <Counter
           count={this.props.count}
-          increment={this.props.incrementCounter}
-          decrement={this.props.decrementCounter}
+          increment={this.props.increment}
+          decrement={this.props.decrement}
         />
       </div>
     );
@@ -25,15 +25,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  incrementCounter: () => {
-    dispatch({
-      type: 'INCREMENT',
-    });
+  increment: () => {
+    increment(dispatch);
   },
-  decrementCounter: () => {
-    dispatch({
-      type: 'DECREMENT',
-    });
+  decrement: () => {
+    decrement(dispatch);
   },
 });
 
