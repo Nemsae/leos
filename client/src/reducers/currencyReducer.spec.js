@@ -7,7 +7,7 @@ describe('REDUCER: currencyReducer', () => {
     const actual = currencyReducer(undefined, {});
     const expected = {
       symbol: 'EOSETH',
-      rate: 0,
+      rate: null,
       isFetching: false,
     };
     expect(actual).toEqual(expected);
@@ -20,7 +20,7 @@ describe('REDUCER: currencyReducer', () => {
     const actual = currencyReducer(undefined, action);
     const expected = {
       symbol: 'EOSETH',
-      rate: 0,
+      rate: null,
       isFetching: true,
     };
     expect(actual).toEqual(expected);
@@ -34,7 +34,7 @@ describe('REDUCER: currencyReducer', () => {
     const actual = currencyReducer(undefined, action);
     const expected = {
       symbol: 'EOSETH',
-      rate: 0,
+      rate: null,
       isFetching: true,
     };
     expect(actual).toEqual(expected);
