@@ -32,6 +32,8 @@ describe('API.fetchCurrentRate ', () => {
 
     const store = mockStore({ symbol: '', rate: 0 });
 
+    console.log('store:APIactions ', store.getState());
+
     return store.dispatch(fetchCurrentRate('EOSETH'))
       .then(() => {
         expect(store.getActions()).toEqual(expectedActions);

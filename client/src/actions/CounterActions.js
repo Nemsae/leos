@@ -4,14 +4,14 @@ export const incrementCounter = () => ({
   type: types.INCREMENT,
 });
 
-export const increment = (dispatch) => {
+export const increment = () => ((dispatch) => {
   dispatch(incrementCounter());
-};
+});
 
 export const decrementCounter = () => ({
   type: types.DECREMENT,
 });
 
-export const decrement = (dispatch) => {
+export const decrement = () => ((dispatch) => {
   dispatch(decrementCounter());
-};
+});
