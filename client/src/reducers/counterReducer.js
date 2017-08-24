@@ -1,4 +1,4 @@
-import expect from 'expect';
+import * as types from '../constants';
 
 export const initialState = {
   count: 0,
@@ -6,12 +6,11 @@ export const initialState = {
 
 export const counterReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'INCREMENT':
-      console.log('state: ', state, action.type);
+    case types.INCREMENT:
       return {
         count: state.count + 1,
       };
-    case 'DECREMENT':
+    case types.DECREMENT:
       return {
         count: state.count - 1,
       };

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import currencyReducer from './currencyReducer';
-import { counterReducer } from './testReducer';
+import { counterReducer } from './counterReducer';
 
 // console.log('currencyReducer: ', currencyReducer);
 

@@ -8,7 +8,7 @@ import * as types from '../constants';
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
 
-describe('ACTIONS:APIactions', () => {
+describe('ACTIONS: APIactions', () => {
   it('requestRate should create an action to update rate of given symbol', () => {
     const symbol = 'EOSETH';
     const expectedAction = {

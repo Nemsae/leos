@@ -30,8 +30,6 @@ const store = createStore(
   middleware(),
 );
 
-console.log('store.getState() ', store.getState());  //  loads initial state
-
 store.subscribe(throttle(() => {
   saveState(store.getState());
 }), 1000);

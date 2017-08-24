@@ -9,7 +9,7 @@ const mockStore = configureMockStore(middlewares);
 
 import { increment, decrement, incrementCounter, decrementCounter } from './CounterActions';
 
-describe('ACTIONS:CounterActions', () => {
+describe('ACTIONS: CounterActions', () => {
   it('increment action should dispatch incrementCounter action', () => {
     const expectedActions = [
       incrementCounter(),

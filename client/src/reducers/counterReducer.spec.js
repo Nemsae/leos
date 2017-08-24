@@ -1,9 +1,9 @@
 import expect from 'expect';
 
-import { counterReducer, initialState } from './testReducer';
+import { counterReducer } from './counterReducer';
 import * as types from '../constants';
 
-describe('REDUCER:counterReducer', () => {
+describe('REDUCER: counterReducer', () => {
   it('should default to initialState with unknown action type', () => {
     const state = { count: 1 };
     const actual = counterReducer(state, { type: 'RANDOM_ACTION' });
