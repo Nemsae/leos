@@ -47,13 +47,13 @@ export class Help extends React.Component {
         break;
       case types.SHOW_ACTIVE:
         console.log('Sanity:SHOW_ACTIVE');
-        filteredTodos = this.props.todos.map((todo) => {
+        filteredTodos = this.props.todos.filter((todo) => {
           if (!todo.isCompleted) return todo;
         });
         console.log('filteredTodos:ACTIVE ', filteredTodos);
         break;
       case types.SHOW_COMPLETED:
-        filteredTodos = this.props.todos.map((todo) => {
+        filteredTodos = this.props.todos.filter((todo) => {
           if (todo.isCompleted) return todo;
         });
         console.log('filteredTodos:COMPLETED ', filteredTodos);
