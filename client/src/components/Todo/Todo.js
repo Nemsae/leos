@@ -14,7 +14,11 @@ const Todo = props => (
     <ul>
       {
         props.todos.map(todo => (
-          <li key={todo.id} onClick={() => props.toggleTodo(todo)}>
+          <li
+            key={todo.id}
+            onClick={() => props.toggleTodo(todo)}
+            style={{ textDecoration: todo.isCompleted ? 'line-through' : 'none' }}
+          >
             {todo.text}
           </li>
         ))
