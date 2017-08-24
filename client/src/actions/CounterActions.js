@@ -15,3 +15,7 @@ export const decrementCounter = () => ({
 export const decrement = () => ((dispatch) => {
   dispatch(decrementCounter());
 });
+
+export const addCounter = () => {
+
+}

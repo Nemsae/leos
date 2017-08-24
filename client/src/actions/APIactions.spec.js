@@ -12,22 +12,22 @@ describe('ACTIONS:APIactions', () => {
   it('requestRate should create an action to update rate of given symbol', () => {
     const symbol = 'EOSETH';
     const expectedAction = {
-      type: 'REQUEST_RATE',
+      type: types.REQUEST_RATE,
       payload: symbol,
     };
     const actual = requestRate(symbol);
     expect(actual).toEqual(expectedAction);
   });
-
   it('receiveRate should create an action to update the exchange rate', () => {
     const data = { message: 'Current exchange rate of EOSETH is 0.004057', lastPrice: 0.004057 };
     const expectedAction = {
-      type: 'RECEIVE_RATE',
+      type: types.RECEIVE_RATE,
       payload: data.lastPrice,
     };
     const actual = receiveRate(data);
     expect(actual).toEqual(expectedAction);
   });
+
   describe('API.fetchCurrentRate ', () => {
     afterEach(() => {
       nock.cleanAll();
@@ -51,8 +51,6 @@ describe('ACTIONS:APIactions', () => {
       ];
 
       const store = mockStore({ symbol: '', rate: 0 });
-
-      console.log('store:APIactions ', store.getState());
 
       return store.dispatch(fetchCurrentRate('EOSETH'))
         .then(() => {

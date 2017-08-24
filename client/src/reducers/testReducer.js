@@ -1,10 +1,10 @@
 import expect from 'expect';
 
-const initialState = {
+export const initialState = {
   count: 0,
 };
 
-const testReducer = (state = initialState, action) => {
+export const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'INCREMENT':
       console.log('state: ', state, action.type);
@@ -19,29 +19,3 @@ const testReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default testReducer;
-
-const actualState1 = testReducer(
-  {
-    count: 0,
-  },
-  {
-    type: 'INCREMENT',
-  },
-);
-
-expect(actualState1.count).toEqual(1);
-
-const actualState2 = testReducer(
-  {
-    count: 1,
-  },
-  {
-    type: 'DECREMENT',
-  },
-);
-
-expect(actualState2.count).toEqual(0);
-
-console.log('Test passed!');
