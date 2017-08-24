@@ -11,6 +11,7 @@ import { loadState, saveState } from './localStorage';
 // sagaMiddleware.run(rootSaga);
 
 const persistedState = loadState();
+console.log('persistedState: ', persistedState);  //  loads correct state
 const loggerMiddleware = createLogger();
 
 const middleware = () => (
@@ -22,9 +23,11 @@ const middleware = () => (
 
 const store = createStore(
   rootReducer,
-  persistedState,
+  // persistedState,
   middleware(),
 );
+
+console.log('store:0 ', store.getState());  //  loads initial state
 
 store.subscribe(() => {
   saveState(store.getState());

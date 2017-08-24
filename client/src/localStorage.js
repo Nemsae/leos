@@ -1,6 +1,6 @@
 export const loadState = () => {
   try {
-    console.log('localStorage: ', localStorage);
+    console.log('localStorage:LOAD ', localStorage);
     const serializedState = localStorage.getItem('state');
     if (serializedState === null) {
       return undefined;
@@ -15,6 +15,7 @@ export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
+    console.log('localStorage:SAVE ', localStorage);
   } catch (err) {
     console.log('Saving Redux state to localStorage failed.');
   }

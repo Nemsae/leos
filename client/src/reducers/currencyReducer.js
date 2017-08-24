@@ -2,7 +2,7 @@ import * as types from '../constants';
 
 const initialState = {
   symbol: 'EOSETH',
-  rate: 0,
+  rate: null,
   isFetching: false,
 };
 
