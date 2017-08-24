@@ -1,10 +1,11 @@
+import uuid from 'node-uuid'
 import * as types from '../constants';
 
 export const todo = (state, action) => {
   switch (action.type) {
     case types.ADD_TODO:
       return {
-        id: action.id,
+        id: uuid(),
         isCompleted: false,
         text: action.text,
       };

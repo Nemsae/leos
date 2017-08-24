@@ -9,12 +9,11 @@ describe('REDUCER: todosReducer', () => {
     const stateBefore = initialState;
     const action = {
       type: types.ADD_TODO,
-      id: 0,
       text: 'Test my todosReducer',
     };
     const stateAfter = [
       {
-        id: 0,
+        // id: 0,   //  id broken because using uid
         isCompleted: false,
         text: 'Test my todosReducer',
       },
@@ -24,7 +23,8 @@ describe('REDUCER: todosReducer', () => {
     deepfreeze(action);
 
     const actual = todosReducer(stateBefore, action);
-    expect(actual).toEqual(stateAfter);
+    expect(actual[0].isCompleted).toBe(stateAfter[0].isCompleted);
+    expect(actual[0].text).toEqual(stateAfter[0].text);
   });
   it('should remove a todo with action type REMOVE_TODO', () => {
     const stateBefore = [
