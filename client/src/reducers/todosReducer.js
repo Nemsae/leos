@@ -11,6 +11,13 @@ export const todosReducer = (state = initialState, action) => {
         isCompleted: false,
         text,
       } ];
+    case types.REMOVE_TODO:
+      const indexToDelete = action.id;
+      return state.filter(item => item.id !== indexToDelete);
+      // return [
+      //   ...state.slice(0, indexToDelete),
+      //   ...state.slice(indexToDelete + 1),
+      // ];
     default:
       return state;
   }

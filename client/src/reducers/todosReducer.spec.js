@@ -26,4 +26,24 @@ describe('REDUCER: todosReducer', () => {
     const actual = todosReducer(stateBefore, action);
     expect(actual).toEqual(stateAfter);
   });
+  it('should remove a todo with action type REMOVE_TODO', () => {
+    const stateBefore = [
+      {
+        id: 0,
+        isCompleted: false,
+        text: 'Test my todosReducer',
+      },
+    ];
+    const action = {
+      type: types.REMOVE_TODO,
+      id: 0,
+    };
+    const stateAfter = [];
+
+    deepfreeze(stateBefore);
+    deepfreeze(action);
+
+    const actual = todosReducer(stateBefore, action);
+    expect(actual).toEqual(stateAfter);
+  });
 });
