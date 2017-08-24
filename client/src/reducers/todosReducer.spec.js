@@ -56,7 +56,11 @@ describe('REDUCER: todosReducer', () => {
     ];
     const action = {
       type: types.TOGGLE_TODO,
-      id: 0,
+      item: {
+        id: 0,
+        isCompleted: false,
+        text: 'Test my todosReducer',
+      },
     };
     const stateAfter = [
       {

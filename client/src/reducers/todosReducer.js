@@ -10,9 +10,7 @@ export const todo = (state, action) => {
         text: action.text,
       };
     case types.TOGGLE_TODO:
-      console.log('Sanity:2', state, action);
       if (state.id !== action.item.id) {
-        console.log('state:NOMATCH ', state);
         return state;
       }
 
@@ -34,7 +32,6 @@ export const todosReducer = (state = initialState, action) => {
       const indexToDelete = action.id;
       return state.filter(item => item.id !== indexToDelete);
     case types.TOGGLE_TODO:
-      console.log('Sanity:1:action ', action);
       return state.map(t => todo(t, action));
       // const todoItem = state.filter((item) => {
       //   if (item.id === action.item.id) {
