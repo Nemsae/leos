@@ -8,40 +8,7 @@ import * as types from '../constants';
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
 
-describe('API.fetchCurrentRate ', () => {
-  afterEach(() => {
-    nock.cleanAll();
-  });
-
-  it('creates REQUEST_RATE and RECEIVE_RATE', () => {
-    const symbol = 'EOSETH';
-    nock('http://localhost:3001')
-      .get(`/api/leos/exchangeRate?symbol=${symbol}`)
-      .reply(200, { message: 'Current exchange rate of EOSETH is 0.004057', lastPrice: 0.004057 });
-
-    const expectedActions = [
-      {
-        type: types.REQUEST_RATE,
-        payload: symbol,
-      },
-      {
-        type: types.RECEIVE_RATE,
-        payload: 0.004057,
-      },
-    ];
-
-    const store = mockStore({ symbol: '', rate: 0 });
-
-    console.log('store:APIactions ', store.getState());
-
-    return store.dispatch(fetchCurrentRate('EOSETH'))
-      .then(() => {
-        expect(store.getActions()).toEqual(expectedActions);
-      });
-  });
-});
-
-describe('API actions', () => {
+describe('ACTIONS:APIactions', () => {
   it('requestRate should create an action to update rate of given symbol', () => {
     const symbol = 'EOSETH';
     const expectedAction = {
@@ -60,5 +27,37 @@ describe('API actions', () => {
     };
     const actual = receiveRate(data);
     expect(actual).toEqual(expectedAction);
+  });
+  describe('API.fetchCurrentRate ', () => {
+    afterEach(() => {
+      nock.cleanAll();
+    });
+
+    it('creates REQUEST_RATE and RECEIVE_RATE', () => {
+      const symbol = 'EOSETH';
+      nock('http://localhost:3001')
+        .get(`/api/leos/exchangeRate?symbol=${symbol}`)
+        .reply(200, { message: 'Current exchange rate of EOSETH is 0.004057', lastPrice: 0.004057 });
+
+      const expectedActions = [
+        {
+          type: types.REQUEST_RATE,
+          payload: symbol,
+        },
+        {
+          type: types.RECEIVE_RATE,
+          payload: 0.004057,
+        },
+      ];
+
+      const store = mockStore({ symbol: '', rate: 0 });
+
+      console.log('store:APIactions ', store.getState());
+
+      return store.dispatch(fetchCurrentRate('EOSETH'))
+        .then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
   });
 });
