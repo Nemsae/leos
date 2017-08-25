@@ -50,7 +50,8 @@ describe('ACTIONS: APIactions', () => {
         },
       ];
 
-      const store = mockStore({ symbol: '', rate: 0 });
+      // const store = mockStore({ symbol: '', rate: 0 });
+      const store = mockStore();
 
       return store.dispatch(fetchCurrentRate('EOSETH'))
         .then(() => {
