@@ -34,8 +34,8 @@ describe('<CurrencyFooter />', () => {
     const IconButtonProps = enzymeWrapper.find('IconButton').props();
 
     // onClick={props.refreshCurrencyRate}
-    console.log('IconButtonProps.onClick: ', IconButtonProps.onClick);
-    console.log('typeof IconButtonProps.onClick: ', typeof IconButtonProps.onClick);
+    // console.log('IconButtonProps.onClick: ', IconButtonProps.onClick);
+    // console.log('typeof IconButtonProps.onClick: ', typeof IconButtonProps.onClick);
 
     expect(IconButtonProps.tooltip).toBe('REFRESH');
     expect(IconButtonProps.tooltipPosition).toBe('top-center');
