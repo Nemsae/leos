@@ -2,7 +2,7 @@ import React from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-export const CurrencySelector = props => (
+const CurrencySelector = props => (
   <SelectField
     floatingLabelText='CURRENCY'
     value={props.symbol}
@@ -14,3 +14,5 @@ export const CurrencySelector = props => (
     <MenuItem value='ETHBTC' primaryText='ETHBTC' />
   </SelectField>
 );
+
+export default CurrencySelector;

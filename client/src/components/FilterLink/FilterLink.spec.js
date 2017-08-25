@@ -33,9 +33,7 @@ describe('<FilterLink />', () => {
   it('should render props.children', () => {
     const text = 'ALL';
     const { enzymeWrapper } = setup(types.SHOW_ALL, undefined, text);
-    console.log('enzymeWrapper: ', enzymeWrapper);
     const actual = enzymeWrapper.find('a').text();
-    console.log('actual: ', actual);
     const expected = text;
     expect(actual).toBe(expected);
   });
