@@ -30,8 +30,8 @@ const store = createStore(
   middleware(),
 );
 
-// store.subscribe(throttle(() => {
-//   saveState(store.getState());
-// }), 1000);
+store.subscribe(throttle(() => {
+  saveState(store.getState());
+}), 1000);
 
 export default store;

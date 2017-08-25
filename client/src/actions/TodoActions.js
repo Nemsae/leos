@@ -1,6 +1,9 @@
+import uuid from 'node-uuid'
+
 import * as types from '../constants';
 
 export const add = text => ({
+  id: uuid(),
   type: types.ADD_TODO,
   text,
 });

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import FilterLink from '../FilterLink';
+import * as types from '../../constants';
 import './styles.css';
 
 const Todo = props => (
@@ -14,9 +16,15 @@ const Todo = props => (
       <button onClick={props.addTodo}>Add</button>
     </div>
     <div className='todo-filter'>
-      <a id='SHOW_ALL' className='link' href='' onClick={props.setFilter}>ALL</a>
-      <a id='SHOW_ACTIVE' className='link' href='' onClick={props.setFilter}>ACTIVE</a>
-      <a id='SHOW_COMPLETED' className='link' href='' onClick={props.setFilter}>COMPLETED</a>
+      <FilterLink filterType={types.SHOW_ALL} setFilter={props.setFilter}>
+        ALL
+      </FilterLink>
+      <FilterLink filterType={types.SHOW_ACTIVE} setFilter={props.setFilter}>
+        ACTIVE
+      </FilterLink>
+      <FilterLink filterType={types.SHOW_COMPLETED} setFilter={props.setFilter}>
+        COMPLETED
+      </FilterLink>
     </div>
     <ul>
       {
