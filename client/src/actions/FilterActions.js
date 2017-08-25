@@ -27,4 +27,4 @@ export const setFilteredTodos = (filter, todos) => {
   }
 }
 
-export const setFilter = filter => dispatch => dispatch(set(filter));
+export const setFilter = filter => set(filter);

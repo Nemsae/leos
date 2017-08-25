@@ -13,11 +13,3 @@
   display: flex;
   margin: 1rem;
 }
-
-.todo a {
-  margin: 0 1rem;
-}
-
-.todo a:active {
-  font-weight: bold;
-}
