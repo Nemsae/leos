@@ -5,7 +5,7 @@ import Counter from '../../components/Counter';
 import Todo from '../../components/Todo';
 import { increment, decrement } from '../../actions/CounterActions';
 import { addTodo, toggleTodo } from '../../actions/TodoActions';
-import { setFilter } from '../../actions/FilterActions';
+import { setFilter, setFilteredTodos } from '../../actions/FilterActions';
 import * as types from '../../constants';
 import './styles.css';
 
@@ -14,11 +14,14 @@ export class Help extends React.Component {
     todoText: '',
   }
 
-  handleTextChange = (e) => {
-    const value = e.target.value;
-    this.setState({
-      todoText: value,
-    });
+  setFilter = (e) => {
+    e.preventDefault();
+    const filter = e.target.id;
+    this.props.setFilter(filter);
+  }
+
+  toggleTodo = (id) => {
+    this.props.toggleTodo(id);
   }
 
   addTodo = () => {
@@ -28,39 +31,36 @@ export class Help extends React.Component {
     });
   }
 
-  toggleTodo = (id) => {
-    this.props.toggleTodo(id);
-  }
-
-  setFilter = (e) => {
-    e.preventDefault();
-    const filter = e.target.id;
-    this.props.setFilter(filter);
+  handleTextChange = (e) => {
+    const value = e.target.value;
+    this.setState({
+      todoText: value,
+    });
   }
 
   render() {
-    let filteredTodos;
-    console.log('this.props.filter: ', this.props.filter);
-    switch (this.props.filter) {
-      case types.SHOW_ALL:
-        filteredTodos = this.props.todos;
-        break;
-      case types.SHOW_ACTIVE:
-        console.log('Sanity:SHOW_ACTIVE');
-        filteredTodos = this.props.todos.filter((todo) => {
-          if (!todo.isCompleted) return todo;
-        });
-        console.log('filteredTodos:ACTIVE ', filteredTodos);
-        break;
-      case types.SHOW_COMPLETED:
-        filteredTodos = this.props.todos.filter((todo) => {
-          if (todo.isCompleted) return todo;
-        });
-        console.log('filteredTodos:COMPLETED ', filteredTodos);
-        break;
-      default:
-        filteredTodos = this.props.todos;
-    }
+    const { filter, todos } = this.props;
+    const filteredTodos = setFilteredTodos(filter, todos);
+    // switch (this.props.filter) {
+    //   case types.SHOW_ALL:
+    //     filteredTodos = this.props.todos;
+    //     break;
+    //   case types.SHOW_ACTIVE:
+    //     console.log('Sanity:SHOW_ACTIVE');
+    //     filteredTodos = this.props.todos.filter((todo) => {
+    //       if (!todo.isCompleted) return todo;
+    //     });
+    //     console.log('filteredTodos:ACTIVE ', filteredTodos);
+    //     break;
+    //   case types.SHOW_COMPLETED:
+    //     filteredTodos = this.props.todos.filter((todo) => {
+    //       if (todo.isCompleted) return todo;
+    //     });
+    //     console.log('filteredTodos:COMPLETED ', filteredTodos);
+    //     break;
+    //   default:
+    //     filteredTodos = this.props.todos;
+    // }
 
     return (
       <div className='home-container'>
@@ -76,6 +76,7 @@ export class Help extends React.Component {
           addTodo={this.addTodo}
           toggleTodo={this.toggleTodo}
           handleTextChange={this.handleTextChange}
+          filter={filter}
           setFilter={this.setFilter}
         />
       </div>

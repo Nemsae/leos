@@ -16,13 +16,13 @@ const Todo = props => (
       <button onClick={props.addTodo}>Add</button>
     </div>
     <div className='todo-filter'>
-      <FilterLink filterType={types.SHOW_ALL} setFilter={props.setFilter}>
+      <FilterLink filterType={types.SHOW_ALL} filter={props.filter} setFilter={props.setFilter}>
         ALL
       </FilterLink>
-      <FilterLink filterType={types.SHOW_ACTIVE} setFilter={props.setFilter}>
+      <FilterLink filterType={types.SHOW_ACTIVE} filter={props.filter} setFilter={props.setFilter}>
         ACTIVE
       </FilterLink>
-      <FilterLink filterType={types.SHOW_COMPLETED} setFilter={props.setFilter}>
+      <FilterLink filterType={types.SHOW_COMPLETED} filter={props.filter} setFilter={props.setFilter}>
         COMPLETED
       </FilterLink>
     </div>

@@ -5,4 +5,26 @@ export const set = filter => ({
   filter,
 });
 
+export const setFilteredTodos = (filter, todos) => {
+  let filteredTodos;
+  switch (filter) {
+    case types.SHOW_ALL:
+      filteredTodos = todos;
+      return filteredTodos;
+    case types.SHOW_ACTIVE:
+      filteredTodos = todos.filter((todo) => {
+        if (!todo.isCompleted) return todo;
+      });
+      return filteredTodos;
+    case types.SHOW_COMPLETED:
+      filteredTodos = todos.filter((todo) => {
+        if (todo.isCompleted) return todo;
+      });
+      return filteredTodos;
+    default:
+      filteredTodos = todos;
+      return filteredTodos;
+  }
+}
+
 export const setFilter = filter => dispatch => dispatch(set(filter));
