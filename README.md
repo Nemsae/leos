@@ -16,6 +16,7 @@
 1. ~~add computeWithPercentage3~~
 1. ~~Add navigation to display Help/How to Use~~
 1. fix localStorage to initialize app with persistedState
+1. abstract out FilterLinks
 1. add tests for reusable components
 1. Local Storage to save settings (like which symbol to load)
 1. MOVE from thunk to Saga
