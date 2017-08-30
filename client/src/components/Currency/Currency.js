@@ -7,6 +7,8 @@ import { CurrencyLoader } from '../CurrencyLoader';
 import { CurrencyFooter } from '../CurrencyFooter';
 import CurrencySelector from '../CurrencySelector';
 
+import './styles.css';
+
 const Currency = props => (
   <Paper className='currency-container'>
     <h1>Current Rate</h1>

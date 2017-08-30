@@ -60,35 +60,21 @@ export class Payout extends React.Component {
         <Link className='button' to='/help'>
           Will Go to Records of Payout
         </Link>
-        <Currency
-          symbol={this.state.symbol}
-          handleCurrencyChange={this.handleCurrencyChange}
-          isFetching={this.props.currency.isFetching}
-          rate={this.props.currency.rate}
-          refreshCurrencyRate={this.refreshCurrencyRate}
-        />
-        {/* <div className='computation-container'>
+        <div className='computation-container'>
           <Paper className='benchmark-container'>
             <h1>Benchmark</h1>
           </Paper>
           <Paper className='payout-container'>
             <h1>Payout</h1>
           </Paper>
-          <Paper className='currency-container'>
-            <h1>Current Rate</h1>
-            <CurrencySelector
-              symbol={this.state.symbol}
-              handleCurrencyChange={this.handleCurrencyChange}
-            />
-            <CurrencyLoader
-              isFetching={this.props.currency.isFetching}
-              rate={this.props.currency.rate}
-            />
-            <CurrencyFooter
-              refreshCurrencyRate={this.refreshCurrencyRate}
-            />
-          </Paper>
-        </div> */}
+          <Currency
+            symbol={this.state.symbol}
+            handleCurrencyChange={this.handleCurrencyChange}
+            isFetching={this.props.currency.isFetching}
+            rate={this.props.currency.rate}
+            refreshCurrencyRate={this.refreshCurrencyRate}
+          />
+        </div>
       </Paper>
     );
   }

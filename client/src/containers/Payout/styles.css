@@ -27,20 +27,6 @@
   margin: 10px;
 }
 
-.currency-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 25%;
-  margin: 10px;
-}
-
-.button-footer {
-  position: absolute;
-  bottom: 10px;
-}
-
 .button {
   color: #e6e6e6;
   background: #0a0a0a;
