@@ -10,6 +10,9 @@
   width: 95%;
   text-align: center;
   justify-content: center;
-  align-items: center; }
-  .currency-rate .rate-text {
-    font-size: 48px; }
+  align-items: center;
+}
+
+.currency-rate__text {
+  font-size: 48px;
+}

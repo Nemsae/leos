@@ -12,7 +12,7 @@ const CurrencyLoader = props => (
           size={30}
         />
       :
-        <p className='rate-text'>
+        <p className='currency-rate__text'>
           {props.rate}
         </p>
     }

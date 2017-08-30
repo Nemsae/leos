@@ -1,7 +1,9 @@
 .link {
-  margin: 0 1rem; }
+  margin: 0 1rem;
+}
 
 .active-link {
   margin: 0 1rem;
   color: black;
-  font-weight: bold; }
+  font-weight: bold;
+}

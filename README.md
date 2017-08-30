@@ -15,6 +15,7 @@
 1. ~~change name of initial computeWithPercentage3~~
 1. ~~add computeWithPercentage3~~
 1. ~~Add navigation to display Help/How to Use~~
+1. figure out how to implement react-dom history into tests
 1. fix localStorage to initialize app with persistedState
 1. abstract out FilterLinks
 1. add tests for reusable components

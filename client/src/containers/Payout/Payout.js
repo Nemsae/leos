@@ -1,21 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 /*  MATERIAL UI  */
 import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
+// import RaisedButton from 'material-ui/RaisedButton';
 
+/*  Actions */
 import { fetchCurrentRate } from '../../actions/APIactions';
 
 import './styles.css';
 
-/* Components */
-import Icon from '../../components/Icon';
+/*  Components  */
+import NavLink from '../../components/NavLink';
+import Benchmark from '../../components/Benchmark';
+import Returns from '../../components/Returns';
 import Currency from '../../components/Currency';
-// import { CurrencyLoader } from '../../components/CurrencyLoader';
-// import { CurrencyFooter } from '../../components/CurrencyFooter';
-// import CurrencySelector from '../../components/CurrencySelector';
+// import Icon from '../../components/Icon';
 
 export class Payout extends React.Component {
   static contextTypes = {
@@ -24,22 +24,22 @@ export class Payout extends React.Component {
 
   constructor(props) {
     super(props);
-    // console.log('props: ', props);
-    // console.log('this.props: ', this.props);
-    // console.log('this.context: ', this.context);
+    // console.log('props: ', props);   //  for testing
+    // console.log('this.props: ', this.props);   //  for testing
+    // console.log('this.context: ', this.context);   //  for testing
     this.state = {
       symbol: props.currency.symbol,
       rate: props.currency.rate,
     };
+
+    this.refreshCurrencyRate = this.refreshCurrencyRate.bind(this);
   }
 
-  // state = {
-  //   symbol: this.props.currency.symbol,
-  //   rate: this.props.currency.rate,
-  // };
+  state = {
+  };
 
   componentWillMount() {
-    // this.props.getCurrentRate(this.state.symbol);
+    this.props.getCurrentRate(this.state.symbol);
   }
 
   handleCurrencyChange = (event, index, value) => {
@@ -47,48 +47,31 @@ export class Payout extends React.Component {
     this.setState({ symbol: value });
   }
 
-  refreshCurrencyRate = () => {
+  refreshCurrencyRate() {
     this.props.getCurrentRate(this.state.symbol);
   }
+  // refreshCurrencyRate = () => {
+  //   this.props.getCurrentRate(this.state.symbol);
+  // }
 
   render() {
     return (
       <Paper className='trades-container'>
-        {/* <Icon name={'facebook'} /> */}
         <h1>Payout</h1>
-        <RaisedButton label='Default' />
-        <Link className='button' to='/help'>
+        {/* <NavLink to={'/help'}>
           Will Go to Records of Payout
-        </Link>
-        <Currency
-          symbol={this.state.symbol}
-          handleCurrencyChange={this.handleCurrencyChange}
-          isFetching={this.props.currency.isFetching}
-          rate={this.props.currency.rate}
-          refreshCurrencyRate={this.refreshCurrencyRate}
-        />
-        {/* <div className='computation-container'>
-          <Paper className='benchmark-container'>
-            <h1>Benchmark</h1>
-          </Paper>
-          <Paper className='payout-container'>
-            <h1>Payout</h1>
-          </Paper>
-          <Paper className='currency-container'>
-            <h1>Current Rate</h1>
-            <CurrencySelector
-              symbol={this.state.symbol}
-              handleCurrencyChange={this.handleCurrencyChange}
-            />
-            <CurrencyLoader
-              isFetching={this.props.currency.isFetching}
-              rate={this.props.currency.rate}
-            />
-            <CurrencyFooter
-              refreshCurrencyRate={this.refreshCurrencyRate}
-            />
-          </Paper>
-        </div> */}
+        </NavLink> */}
+        <div className='computation-container'>
+          <Benchmark />
+          <Returns />
+          <Currency
+            symbol={this.state.symbol}
+            handleCurrencyChange={this.handleCurrencyChange}
+            isFetching={this.props.currency.isFetching}
+            rate={this.props.currency.rate}
+            refreshCurrencyRate={this.refreshCurrencyRate}
+          />
+        </div>
       </Paper>
     );
   }

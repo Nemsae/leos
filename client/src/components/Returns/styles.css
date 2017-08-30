@@ -1,5 +1,8 @@
-.trades-container {
+
+.returns-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
+  margin: 10px;
 }
