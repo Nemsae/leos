@@ -1,5 +1,12 @@
-const consts = {
-  RECEIVE_ENCRYPTED_MESSAGE: 'RECEIVE_ENCRYPTED_MESSAGE',
-};
-
-export default consts;
+export const REQUEST_RATE = 'REQUEST_RATE';
+export const RECEIVE_RATE = 'RECEIVE_RATE';
+export const TEST_SPINNER = 'TEST_SPINNER';
+export const INCREMENT = 'INCREMENT';
+export const DECREMENT = 'DECREMENT';
+export const ADD_TODO = 'ADD_TODO';
+export const REMOVE_TODO = 'REMOVE_TODO';
+export const TOGGLE_TODO = 'TOGGLE_TODO';
+export const SHOW_ALL = 'SHOW_ALL';
+export const SHOW_ACTIVE = 'SHOW_ACTIVE';
+export const SHOW_COMPLETED = 'SHOW_COMPLETED';
+export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';

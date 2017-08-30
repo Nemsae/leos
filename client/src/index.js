@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
-import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import theme from './assets/react-toolbox/theme.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import registerServiceWorker from './registerServiceWorker';
-import App from './components/App';
+
+import App from './containers/App';
+import store from './configureStore';
+import './index.css';
+
+injectTapEventPlugin();
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <BrowserRouter>
+  <Provider store={store}>
+    <MuiThemeProvider>
       <App />
-    </BrowserRouter>
-  </ThemeProvider>, document.getElementById('root'));
+    </MuiThemeProvider>
+  </Provider>, document.getElementById('root'), // eslint-disable-line no-undef
+);
+
 registerServiceWorker();
