@@ -12,6 +12,7 @@ import './styles.css';
 
 /* Components */
 // import Icon from '../../components/Icon';
+import Benchmark from '../../components/Benchmark';
 import Currency from '../../components/Currency';
 // import { CurrencyLoader } from '../../components/CurrencyLoader';
 // import { CurrencyFooter } from '../../components/CurrencyFooter';
@@ -54,16 +55,13 @@ export class Payout extends React.Component {
   render() {
     return (
       <Paper className='trades-container'>
-        {/* <Icon name={'facebook'} /> */}
         <h1>Payout</h1>
         <RaisedButton label='Default' />
         <Link className='button' to='/help'>
           Will Go to Records of Payout
         </Link>
         <div className='computation-container'>
-          <Paper className='benchmark-container'>
-            <h1>Benchmark</h1>
-          </Paper>
+          <Benchmark />
           <Paper className='payout-container'>
             <h1>Payout</h1>
           </Paper>
