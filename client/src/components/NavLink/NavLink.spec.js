@@ -35,8 +35,8 @@ describe('<NavLink/>', () => {
   it('should render self and subcomponents', () => {
     // sinon.spy(NavLink.prototype, '')
     const { enzymeWrapper, props } = setup();
-    console.log('props: ', props);
-    console.log('enzymeWrapper: ', enzymeWrapper);
+    // console.log('props: ', props);
+    // console.log('enzymeWrapper: ', enzymeWrapper);
     // let x = enzymeWrapper.dive();
     // console.log('x: ', x);
 

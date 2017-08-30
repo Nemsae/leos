@@ -58,9 +58,9 @@ export class Payout extends React.Component {
     return (
       <Paper className='trades-container'>
         <h1>Payout</h1>
-        <NavLink to={'/help'}>
+        {/* <NavLink to={'/help'}>
           Will Go to Records of Payout
-        </NavLink>
+        </NavLink> */}
         <div className='computation-container'>
           <Benchmark />
           <Returns />

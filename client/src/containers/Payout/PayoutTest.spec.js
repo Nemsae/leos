@@ -1,23 +1,31 @@
 import React from 'react';
-import expect from 'expect';
-import sinon from 'sinon';
-import { shallow } from 'enzyme';
+import expect, { createSpy } from 'expect';
+import { mount } from 'enzyme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import { Payout } from './Payout';
+
+const getCurrentRateSpy = createSpy();
 
 const setup = () => {
   const props = {
     currency: {
       symbol: 'EOSETH',
       rate: '.0045',
-      getCurrentRate: function getCurrentRate() {},
-      // getCurrentRate: () => {},
     },
+    getCurrentRate: getCurrentRateSpy,
   };
 
-  console.log('props: ', props);
-
-  const enzymeWrapper = shallow(<Payout {...props} />);
+  const enzymeWrapper = mount(<Payout {...props} />, {
+    context: {
+      muiTheme: getMuiTheme(),
+      // history: {},
+    },
+    childContextTypes: {
+      muiTheme: React.PropTypes.object.isRequired,
+      // history: React.PropTypes.object.isRequired,
+    },
+  });
 
   return {
     enzymeWrapper,
@@ -25,16 +33,16 @@ const setup = () => {
   };
 };
 
-// describe('<Payout/>', () => {
-//   it('should trigger method', () => {
-//     const refreshCurrencyRate = sinon.spy(Payout.prototype, 'refreshCurrencyRate');
-//     const { enzymeWrapper } = setup();
-//     const instance = enzymeWrapper.instance();
-//     const IconButton = enzymeWrapper.find('IconButton');
-//     console.log('IconButton: ', IconButton);
-//
-//   });
-// });
+describe('<Payout/>', () => {
+  it('should trigger method', () => {
+    const { enzymeWrapper } = setup();
+    // const instance = enzymeWrapper.instance();
+    const IconButton = enzymeWrapper.find('.MyIconButton');  //  just 'IconButton' will not be found
+    // console.log('IconButton:<Payout/> ', IconButton);
+    IconButton.simulate('click');
+    expect(getCurrentRateSpy).toHaveBeenCalled();
+  });
+});
 
 // REFERENCE https://github.com/airbnb/enzyme/issues/697
 // class SomeComponent extends Component {

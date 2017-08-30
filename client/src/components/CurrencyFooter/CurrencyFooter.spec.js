@@ -39,10 +39,6 @@ describe('<CurrencyFooter />', () => {
     expect(enzymeWrapper.find('div').first().hasClass('button-footer')).toBe(true);
     const IconButtonProps = enzymeWrapper.find('IconButton').props();
 
-    // onClick={props.refreshCurrencyRate}
-    // console.log('IconButtonProps.onClick: ', IconButtonProps.onClick);
-    // console.log('typeof IconButtonProps.onClick: ', typeof IconButtonProps.onClick);
-
     expect(IconButtonProps.tooltip).toBe('REFRESH');
     expect(IconButtonProps.tooltipPosition).toBe('top-center');
     expect(IconButtonProps.tooltipStyles).toEqual({ fontSize: '18px' });
@@ -54,7 +50,9 @@ describe('<CurrencyFooter />', () => {
   });
   it('should call refreshCurrencyRate when clicked', () => {
     const { enzymeWrapper } = setup();
-    enzymeWrapper.find('IconButton').simulate('click');
+    const IconButton = enzymeWrapper.find('IconButton')
+    IconButton.simulate('click');
+    console.log('IconButton:<CurrencyFooter/> ', IconButton);
     expect(refreshCurrencyRateSpy).toHaveBeenCalled();
   });
 });
