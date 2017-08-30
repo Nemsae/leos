@@ -17,7 +17,7 @@ const Nav = () => (
     </li>
     <li>
       <NavLink activeClassName='active' to='/payout'>
-        4cast
+        Payout
       </NavLink>
     </li>
     <li>
