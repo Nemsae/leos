@@ -11,6 +11,7 @@
 ### Encrypted messages are persisted on a MongoDB server.
 
 ### TODO
+1. figure out how to implement react-dom history into tests
 1. change post to a get, so we can put in myEther var into the query params
 1. change name of initial computeWithPercentage3
 1. add computeWithPercentage3
