@@ -17,19 +17,19 @@ import { CurrencyFooter } from '../../components/CurrencyFooter';
 import CurrencySelector from '../../components/CurrencySelector';
 
 export class Payout extends React.Component {
+  static contextTypes = {
+    store: React.PropTypes.object,
+  }
+
   constructor(props) {
     super(props);
-    console.log('props: ', props);
-    console.log('this.props: ', this.props);
-    console.log('this.context: ', this.context);
+    // console.log('props: ', props);
+    // console.log('this.props: ', this.props);
+    // console.log('this.context: ', this.context);
     this.state = {
       symbol: props.currency.symbol,
       rate: props.currency.rate,
     };
-  }
-
-  static contextTypes = {
-    store: React.PropTypes.object,
   }
 
   // state = {
