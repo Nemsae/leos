@@ -1,1 +1,3 @@
-export { CurrencySelector } from './CurrencySelector';
+import CurrencySelector from './CurrencySelector';
+
+export default CurrencySelector;

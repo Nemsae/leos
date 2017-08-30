@@ -14,17 +14,28 @@ import './styles.css';
 import Icon from '../../components/Icon';
 import { CurrencyLoader } from '../../components/CurrencyLoader';
 import { CurrencyFooter } from '../../components/CurrencyFooter';
-import { CurrencySelector } from '../../components/CurrencySelector';
+import CurrencySelector from '../../components/CurrencySelector';
 
 export class Payout extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log('props: ', props);
+    console.log('this.props: ', this.props);
+    console.log('this.context: ', this.context);
     this.state = {
       symbol: props.currency.symbol,
       rate: props.currency.rate,
     };
   }
+
+  static contextTypes = {
+    store: React.PropTypes.object,
+  }
+
+  // state = {
+  //   symbol: this.props.currency.symbol,
+  //   rate: this.props.currency.rate,
+  // };
 
   componentWillMount() {
     // this.props.getCurrentRate(this.state.symbol);
