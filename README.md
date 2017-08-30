@@ -8,6 +8,11 @@
 5. `$ cd..`
 6. `$ npm start`
 
+## TESTING
+### With expect library, mocha, and enzyme
+### 43 Passing Tests, will integrated into TDD Circle CI
+1. `$ cd client && npm run test-all`
+
 ### Encrypted messages are persisted on a MongoDB server.
 
 ### TODO
