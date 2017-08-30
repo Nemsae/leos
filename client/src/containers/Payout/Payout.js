@@ -11,10 +11,11 @@ import { fetchCurrentRate } from '../../actions/APIactions';
 import './styles.css';
 
 /* Components */
-import Icon from '../../components/Icon';
-import { CurrencyLoader } from '../../components/CurrencyLoader';
-import { CurrencyFooter } from '../../components/CurrencyFooter';
-import CurrencySelector from '../../components/CurrencySelector';
+// import Icon from '../../components/Icon';
+import Currency from '../../components/Currency';
+// import { CurrencyLoader } from '../../components/CurrencyLoader';
+// import { CurrencyFooter } from '../../components/CurrencyFooter';
+// import CurrencySelector from '../../components/CurrencySelector';
 
 export class Payout extends React.Component {
   constructor(props) {
@@ -59,7 +60,14 @@ export class Payout extends React.Component {
         <Link className='button' to='/help'>
           Will Go to Records of Payout
         </Link>
-        <div className='computation-container'>
+        <Currency
+          symbol={this.state.symbol}
+          handleCurrencyChange={this.handleCurrencyChange}
+          isFetching={this.props.currency.isFetching}
+          rate={this.props.currency.rate}
+          refreshCurrencyRate={this.refreshCurrencyRate}
+        />
+        {/* <div className='computation-container'>
           <Paper className='benchmark-container'>
             <h1>Benchmark</h1>
           </Paper>
@@ -80,7 +88,7 @@ export class Payout extends React.Component {
               refreshCurrencyRate={this.refreshCurrencyRate}
             />
           </Paper>
-        </div>
+        </div> */}
       </Paper>
     );
   }
