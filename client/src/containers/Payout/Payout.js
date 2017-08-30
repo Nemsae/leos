@@ -12,6 +12,7 @@ import './styles.css';
 
 /* Components */
 // import Icon from '../../components/Icon';
+import NavLink from '../../components/NavLink';
 import Benchmark from '../../components/Benchmark';
 import Returns from '../../components/Returns';
 import Currency from '../../components/Currency';
@@ -57,10 +58,9 @@ export class Payout extends React.Component {
     return (
       <Paper className='trades-container'>
         <h1>Payout</h1>
-        <RaisedButton label='Default' />
-        <Link className='button' to='/help'>
+        <NavLink to={'/help'}>
           Will Go to Records of Payout
-        </Link>
+        </NavLink>
         <div className='computation-container'>
           <Benchmark />
           <Returns />
