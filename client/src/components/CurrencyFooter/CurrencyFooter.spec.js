@@ -1,14 +1,20 @@
 import React from 'react';
-import expect from 'expect';
-// import jest from 'jest';
+import expect, { createSpy } from 'expect';
+// import jasmine from 'jasmine';
+// import sinon from 'sinon';
 import { mount } from 'enzyme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import { CurrencyFooter } from './CurrencyFooter';
 
+// const refreshCurrencyRate = () => {};
+
+const refreshCurrencyRateSpy = createSpy();
+// const refreshCurrencyRateSpy = jasmine.createSpy('refreshCurrencyRate');
+
 const setup = () => {
   const props = {
-    // refreshCurrencyRate: jest.fn(),
+    refreshCurrencyRate: refreshCurrencyRateSpy,
   };
 
   const enzymeWrapper = mount(<CurrencyFooter {...props} />, {
@@ -45,5 +51,10 @@ describe('<CurrencyFooter />', () => {
     // const button = enzymeWrapper.find('IconButton');
 
     // expect(props.refreshCurrencyRate.mock.calls)
+  });
+  it('should call refreshCurrencyRate when clicked', () => {
+    const { enzymeWrapper } = setup();
+    enzymeWrapper.find('IconButton').simulate('click');
+    expect(refreshCurrencyRateSpy).toHaveBeenCalled();
   });
 });
