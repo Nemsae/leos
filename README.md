@@ -1,5 +1,5 @@
 # lEOS
-
+[![N|Solid](https://assets-cdn.github.com/images/modules/open_graph/github-mark.png)](https://nodesource.com/products/nsolid)
 ## SETUP
 1. `$ git clone https://github.com/Nemsae/leos`
 2. `$ cd leos`
