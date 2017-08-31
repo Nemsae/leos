@@ -1,5 +1,12 @@
 # lEOS
 [![N|Solid](https://assets-cdn.github.com/images/modules/open_graph/github-mark.png)](https://nodesource.com/products/nsolid)
+
+### Resume
+  * [Projects](#my-projects)
+  * [Education](#my-education)
+  * [Skills](#my-skills)
+  * [Hackathons](#my-hackathons)
+
 ## SETUP
 1. `$ git clone https://github.com/Nemsae/leos`
 2. `$ cd leos`
@@ -13,6 +20,7 @@
 ### 43 Passing Tests, will integrated into TDD Circle CI
 1. `$ cd client && npm run test-all`
 
+## My Projects
 ### Encrypted messages are persisted on a MongoDB server.
 
 ### TODO
